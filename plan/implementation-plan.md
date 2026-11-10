@@ -7,7 +7,7 @@ status: draft
 
 # Implementation plan: Phase 1 website (pre-MVP)
 
-Steve decides; this is a working draft. **Writer for this repo:** Claude (Opus 5.5) in Steve's current session (2026-11-09). Codex can build in a worktree when Steve hands it work; the writer merges.
+Steve decides; this is a working draft. **Writer for this repo:** the Claude session Steve opens **in this folder** (from 2026-11-09). The repo was scaffolded earlier by Claude from Steve's planning session, which no longer writes here. Codex can build in a worktree when Steve hands it work; the writer merges.
 
 **Approach:**
 - plain HTML and CSS, with no build step

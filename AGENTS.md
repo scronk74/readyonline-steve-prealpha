@@ -12,6 +12,15 @@ This is the **public** repo for ReadyOnline's Phase 1 website. Planning, decisio
 - **One writer at a time.** The writer for this repo is named in `plan/implementation-plan.md`. Only the writer commits and pushes `main`; other agents are read-only.
 - **Laptop boundary:** work only inside this repo's folder and owned `/tmp` scratch.
 
+## Using Steve's agent roles (read-only)
+
+Steve's agent roles (UX lead, True North, skeptic, security reviewer, code reviewer, super coder, project manager, scope guard, fact-checker) live in his **private** planning repo, Lighthouse (brain), next to this folder: `../readyonline_brain/agents/roles/`. Each role's playbook is in `../readyonline_brain/agents/<role>/`.
+
+- **Access:** start Claude here with `claude --add-dir ../readyonline_brain`, or type `/add-dir ../readyonline_brain` in a session. Steve approved that folder for **reading only**.
+- **When Steve asks for a role** (e.g. "UX lead review of the home page"), read that role file and its playbook, then answer in the role's format.
+- **Never write to the planning repo** from here, and **never copy its content into this public repo.** Some of it is private.
+- **Decisions** are recorded in the planning repo by a session working there. Mention any decision Steve makes here, so he can record it.
+
 ## Rules (public repo)
 
 - **Website files live in `docs/`** (what GitHub Pages publishes). Planning files stay at the top level.
