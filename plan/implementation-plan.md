@@ -37,11 +37,20 @@ Steve decides; this is a working draft. **Writer for this repo:** the Claude ses
 | 0.7 | **Footer:** a short, accurate privacy note (no accounts, no tracking; hosting may log visits), a credit to Ngoc's work, contact via email (address to be confirmed) | Privacy wording claims nothing untrue |
 | 0.8 | **Checks:** Live Server on the laptop; a quick phone check at 390px (nothing broken; all links and Get help showing); keyboard only; JavaScript off; no console errors; the header and the bottom help line are identical on every page; `grep -rn 'href="/' docs/` finds nothing; `git ls-files docs/` lists only website files; no secrets | All pass; screenshots saved for Steve |
 
-**Proposed banner wording (Steve approves):**
+**Banner wording (live since Steve turned on Pages, 2026-11-09):**
 
 > **Work in progress.** This page is a design sample, not a working help service. The numbers on it are not real. If you need help now: in the US, call or text **988** ([988lifeline.org](https://988lifeline.org)). Outside the US: [findahelpline.com](https://findahelpline.com).
 
-**Reviews for Slice 0:** UX lead (shell, navigation, Get help), True North (Get help wording, safe messaging), security reviewer (before Pages is ever enabled).
+**Reviews for Slice 0:** UX lead (shell, navigation, Get help), True North (Get help wording, safe messaging), security reviewer (before Pages is ever enabled: done 2026-11-09, see below).
+
+**Live:** <https://scronk74.github.io/readyonline-steve-prealpha/>, published from `docs/` on `main`, with HTTPS enforced. Pre-publish security check (2026-11-09):
+- Passed:
+  - only website files are in `docs/`, and the history holds nothing private
+  - no third-party scripts, fonts or embeds, and no repo workflows
+  - every page and asset loads over HTTPS, and http redirects to https
+- Gaps, and what covers them:
+  - no Content Security Policy: the site has no scripts or forms, and a CSP would block Live Server's reload script
+  - Steve's GitHub two-factor sign-in couldn't be checked from here; Steve should confirm it
 
 ## Later slices (outline; detailed when each starts)
 
@@ -56,7 +65,7 @@ Steve decides; this is a working draft. **Writer for this repo:** the Claude ses
 
 ## Open questions (asked in chat, one at a time)
 
-- The banner wording and its real-support links (Steve approves before Pages is turned on).
+- Whether the footer credit names Ngoc (it says "its founder" for now).
 - Reusing text from Ngoc's current lessons needs her OK (Slice 1 onwards).
 - The core message, to be agreed with Ngoc.
 - The contact email for the footer.

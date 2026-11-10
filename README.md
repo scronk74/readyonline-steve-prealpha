@@ -10,9 +10,9 @@ Online-safety education for kids, teens, parents and seniors. **Work in progress
 
 Phone sizes: in Chrome press ⌥⌘I, then ⌘⇧M, and pick an iPhone.
 
-## Publishing (only when Steve chooses)
+## Publishing
 
-GitHub Pages can publish this repo **from the `docs/` folder** on `main`, with no build step. Only `docs/` is published; the planning files at the top level are not.
+GitHub Pages publishes this repo **from the `docs/` folder** on `main`, with no build step, at <https://scronk74.github.io/readyonline-steve-prealpha/> (turned on by Steve on 2026-11-09, as a demo for Steve and Ngoc). Every push to `main` updates the live site. Only `docs/` is published; the planning files at the top level are not.
 
 ## Rules for this repo (it's public)
 
