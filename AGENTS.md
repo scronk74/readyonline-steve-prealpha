@@ -15,7 +15,7 @@ This is the **public** repo for ReadyOnline's Phase 1 website. Planning, decisio
 ## Rules (public repo)
 
 - **Website files live in `docs/`** (what GitHub Pages publishes). Planning files stay at the top level.
-- **Relative links only.** Never use a leading `/`. Link to folders as `folder/index.html`. Everything must work the same under Live Server and at `…github.io/readyonline-site/`.
+- **Relative links only.** Never use a leading `/`. Link to folders as `folder/index.html`. Everything must work the same under Live Server and at `…github.io/readyonline-steve-prealpha/`.
 - **Nothing private:** no survey data, quotes, research or internal docs. Survey figures appear only as checked totals with their denominators.
 - **No third-party scripts, fonts, embeds or analytics.** Forms are links only: Ngoc's existing Microsoft Form, and `mailto:` for contact.
 - **Privacy claims must be true.** GitHub Pages logs visitor IP addresses, so never write "nothing is stored". "Nothing is saved" is fine only for features that truly save nothing, such as the demo.
