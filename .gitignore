@@ -1,0 +1,8 @@
+# Local secrets and environment (never commit)
+.env
+.env.*
+
+# macOS / tooling
+.DS_Store
+node_modules/
+*.log
