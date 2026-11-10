@@ -15,6 +15,7 @@ Steve decides; this is a working draft. **Writer for this repo:** Claude (Opus 5
 - relative links only
 - viewed with Live Server and ready for GitHub Pages
 - JavaScript only for optional extras; core content works without it
+- **a demo for Steve and Ngoc:** while it's on Pages, only they use it. Nothing on it pretends to be a working help service.
 
 **Reviews:**
 - scope guard and fact-checker inline, always
@@ -23,28 +24,39 @@ Steve decides; this is a working draft. **Writer for this repo:** Claude (Opus 5
 
 ## Slice 0: Skeleton (build first)
 
-**Outcome:** a site you can click through on a phone and a laptop, with Get help one tap from every page.
+**Outcome:** a site that looks good and clicks through on Steve's 13" MacBook Air, with Get help one click from every page. Phones get a quick "nothing broken" check only; full phone and device testing comes later.
 
 | # | Task | Done when |
 |---|---|---|
-| 0.1 | **Site shell and styles** (`docs/styles.css`): calm ReadyOnline look (navy, cyan, lime used with restraint); system fonts; body text 16px or larger; a skip link; visible focus | Contrast checked; nothing under 14px; readable at 390px wide |
-| 0.2 | **Header on every page:** the logo goes home; menu: Young people · Parents · Seniors · Research · What we're building · About; a **Get help** link outside the menu | All 6 menu items and Get help reachable on a phone; no hamburger hides Get help |
-| 0.3 | **Home** (`docs/index.html`): draft core message ("Build digital instincts for life, at every age"), Pause · Think · Act, four doors: Kids, Teens, Parents, Seniors | Within the first screen, a visitor knows what this is and where to go |
-| 0.4 | **Get help** (`docs/get-help/index.html`): Ngoc's line; routes for talking to someone now, reporting exploitation, and other urgent help; phone numbers in plain text; marked **"Draft: details being verified"** | Works with JavaScript off; every number shown as text; draft label visible |
-| 0.5 | **Placeholder pages** for each menu item ("Coming soon", one line on what's coming) | No broken links |
-| 0.6 | **Footer:** a short, accurate privacy note (no accounts, no tracking; hosting may log visits), a credit to Ngoc's work, contact via email (address to be confirmed) | Privacy wording claims nothing untrue |
-| 0.7 | **Checks:** Live Server at 390px and 1440px; keyboard only; no console errors; `grep -rn 'href="/' docs/` finds nothing; `git ls-files docs/` lists only website files; no secrets | All pass; screenshots saved for Steve |
+| 0.1 | **Site shell and styles** (`docs/styles.css`): calm ReadyOnline look (navy, cyan, lime used with restraint); system fonts; body text 16px or larger; a skip link; visible focus | Looks good on the laptop (about 1440–1470px wide); contrast checked, with cyan and lime as fills and accents only, never as text on white; nothing under 14px |
+| 0.2 | **Header on every page:** the logo goes home; all six menu links visible, with no menu button: Young people · Parents · Seniors · Research · What we're building · About; **Get help** set apart, outside the menu. Laptop: one row. Phone: the links wrap into two columns, no JavaScript | Looks good on the laptop; on a phone, all six links and Get help show without a menu button. (A hamburger menu stays an option when phone design starts.) |
+| 0.3 | **Home** (`docs/index.html`): draft core message ("Build digital instincts for life, at every age"), Pause · Think · Act, four doors: Kids, Teens, Parents, Seniors | Within the first laptop screen, a visitor knows what this is and where to go |
+| 0.4 | **Get help** (`docs/get-help/index.html`), **demo version.** A **work-in-progress banner** comes first: this is a design sample, not a working help service; the numbers on the page are not real; a link to real support (proposed wording below). Then Ngoc's line, and routes for talking to someone now, reporting exploitation, and other urgent help. The routes have generic names (no real service names next to sample numbers). Sample numbers come from the range set aside for fiction (555-0100 to 555-0199), each tagged "Sample" | Works with JavaScript off; the banner is the first thing on the page; its real-support links are checked live; Steve approves the banner wording before Pages is turned on |
+| 0.5 | **Placeholder pages** for each menu item ("Coming soon", one line on what's coming). The Young people page has Kids and Teens sections, so the home doors land somewhere | No broken links |
+| 0.6 | **Help at the bottom of every page,** above the footer: "Need help now? Get help" | On every page, placeholders included |
+| 0.7 | **Footer:** a short, accurate privacy note (no accounts, no tracking; hosting may log visits), a credit to Ngoc's work, contact via email (address to be confirmed) | Privacy wording claims nothing untrue |
+| 0.8 | **Checks:** Live Server on the laptop; a quick phone check at 390px (nothing broken; all links and Get help showing); keyboard only; JavaScript off; no console errors; the header and the bottom help line are identical on every page; `grep -rn 'href="/' docs/` finds nothing; `git ls-files docs/` lists only website files; no secrets | All pass; screenshots saved for Steve |
+
+**Proposed banner wording (Steve approves):**
+
+> **Work in progress.** This page is a design sample, not a working help service. The numbers on it are not real. If you need help now: in the US, call or text **988** ([988lifeline.org](https://988lifeline.org)). Outside the US: [findahelpline.com](https://findahelpline.com).
 
 **Reviews for Slice 0:** UX lead (shell, navigation, Get help), True North (Get help wording, safe messaging), security reviewer (before Pages is ever enabled).
 
 ## Later slices (outline; detailed when each starts)
 
-- **Slice 1: Core audiences.** Young people hub (Kids and Teens), Parents, Seniors: first drafts from Ngoc's material by True North. Quick menu-label test with 3–5 people.
+- **Slice 1: Core audiences.** Young people hub (Kids and Teens), Parents, Seniors: first drafts from Ngoc's material by True North. Menu-label test ("Young people" vs "Kids & Teens") with kids and teens separately, with a parent's consent and the child's own agreement.
 - **Slice 2: Trust and evidence.** Research highlights (checked totals and a methods note), About/contact/privacy, app teasers with the early-access link once Ngoc agrees to its use.
-- **Slice 3: Guides and demo.** First setup guide (Snapchat) with a "last checked" date and approval; verified Get help details; then the teen practice demo (self-contained, nothing saved).
+- **Slice 3: Guides and demo.** First setup guide (Snapchat) with a "last checked" date and approval; verified Get help details replace the sample numbers and the banner; then the teen practice demo (self-contained, nothing saved).
+
+## Later, not yet scheduled
+
+- **UI test plan** before phone design starts: phone layouts (including a hamburger menu option), 320px width, 200% zoom, other devices.
+- **Page-by-page design Q&A** with Steve once design details get precise. First topic: what each home door promises (one concrete thing is too little).
 
 ## Open questions (asked in chat, one at a time)
 
+- The banner wording and its real-support links (Steve approves before Pages is turned on).
 - Reusing text from Ngoc's current lessons needs her OK (Slice 1 onwards).
 - The core message, to be agreed with Ngoc.
 - The contact email for the footer.
