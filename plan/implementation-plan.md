@@ -52,6 +52,8 @@ Steve decides; this is a working draft. **Writer for this repo:** the Claude ses
   - no Content Security Policy: the site has no scripts or forms, and a CSP would block Live Server's reload script
   - Steve's GitHub two-factor sign-in couldn't be checked from here; Steve should confirm it
 
+**Dark mode comparison (2026-11-10, temporary):** after feedback that dark mode looks AI-made, Steve asked for three dark mode designs with a switch on the page, published so he can review them with Ngoc. A is the current design, B "Quieter", C "Example". The switch lives in `docs/looks.css` and `docs/looks.js` (plus the example text in `docs/index.html`). Light mode is unchanged. Once a design is chosen, fold it into `styles.css` and delete the switch.
+
 ## Later slices (outline; detailed when each starts)
 
 - **Slice 1: Core audiences.** Young people hub (Kids and Teens), Parents, Seniors: first drafts from Ngoc's material by True North. Menu-label test ("Young people" vs "Kids & Teens") with kids and teens separately, with a parent's consent and the child's own agreement.

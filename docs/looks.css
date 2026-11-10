@@ -1,0 +1,540 @@
+/* Review only: two alternative dark mode designs (B and C) beside the current one (A).
+   looks.js sets data-look="b" or "c" on <html>, and only in dark mode, so light mode and
+   design A are untouched. Remove this file and looks.js once one is chosen. */
+
+/* ---------- The review switch (same in every design) ---------- */
+
+.look-panel {
+  position: fixed;
+  left: 12px;
+  bottom: 12px;
+  z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 8px;
+  max-width: calc(100% - 24px);
+  padding: 8px 10px 8px 14px;
+  background: #ffffff;
+  color: #0b1a36;
+  border: 2px solid #0b1a36;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  font-family: var(--font);
+  font-size: 0.9375rem; /* 15px */
+  line-height: 1.2;
+}
+
+.look-panel-label {
+  font-weight: 700;
+  margin-right: 2px;
+}
+
+.look-panel button {
+  min-height: 40px;
+  padding: 6px 12px;
+  border: 2px solid #0b1a36;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #0b1a36;
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.look-panel button[aria-pressed="true"] {
+  background: #0b1a36;
+  color: #ffffff;
+}
+
+.look-panel button:focus-visible {
+  outline: 3px solid #0b1a36;
+  outline-offset: 2px;
+}
+
+body.has-look-panel {
+  padding-bottom: 76px;
+}
+
+/* Phones: just the letters, so the switch stays one short row (names stay for screen readers) */
+@media (max-width: 640px) {
+  .look-panel button {
+    min-width: 44px;
+  }
+
+  .look-panel .look-name {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+/* The example text message exists only in design C */
+.example {
+  display: none;
+}
+
+/* =====================================================================
+   B: Quieter
+   Calm slate instead of near-black, no neon. The three steps run across
+   under the headline; the doors are plain links; help sits in a soft box.
+   ===================================================================== */
+
+:root[data-look="b"] {
+  --paper: #18202b;
+  --surface: #212b38;
+  --ink: #eef2f6;
+  --ink-soft: #b6c1ce;
+  --line: #3a4757;
+  --hover-tint: #263241;
+  --tile: #0b1a36;
+  --help-bg: #eef2f6;
+  --help-bg-hover: #ffffff;
+  --help-text: #0b1a36;
+  --band-bg: #212b38;
+  --band-edge: #212b38;
+  --on-band: #eef2f6;
+  --on-band-soft: #b6c1ce;
+  --radius: 10px;
+}
+
+:root[data-look="b"] h1,
+:root[data-look="b"] h2,
+:root[data-look="b"] h3,
+:root[data-look="b"] .brand,
+:root[data-look="b"] .pta-word,
+:root[data-look="b"] .door-name {
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+:root[data-look="b"] .site-header {
+  background: var(--paper);
+}
+
+/* Get help: a plain light button, the reverse of light mode's navy one */
+:root[data-look="b"] .help-link,
+:root[data-look="b"] .help-band .help-link {
+  padding-inline: 20px;
+  border-radius: 8px;
+  background: var(--help-bg);
+  color: var(--help-text);
+}
+
+:root[data-look="b"] .help-link::before {
+  display: none;
+}
+
+:root[data-look="b"] .help-link:hover,
+:root[data-look="b"] .help-band .help-link:hover {
+  background: var(--help-bg-hover);
+}
+
+:root[data-look="b"] .help-link[aria-current="page"] {
+  box-shadow: 0 0 0 3px var(--paper), 0 0 0 5px var(--ink);
+}
+
+:root[data-look="b"] .help-band .help-link[aria-current="page"] {
+  box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px var(--ink);
+}
+
+:root[data-look="b"] .theme-toggle {
+  border-radius: 8px;
+  background: var(--paper);
+}
+
+/* Home: headline first, then the three steps in a row */
+:root[data-look="b"] .hero {
+  grid-template-columns: 1fr;
+  gap: 44px;
+  padding-block: 64px 56px;
+}
+
+:root[data-look="b"] .hero h1 {
+  max-width: 22ch;
+  font-size: clamp(2.25rem, 3.4vw, 3rem);
+  line-height: 1.12;
+}
+
+:root[data-look="b"] .hero .lead {
+  margin-top: 18px;
+  max-width: 36rem;
+}
+
+:root[data-look="b"] .pta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px;
+}
+
+:root[data-look="b"] .pta::before {
+  display: none;
+}
+
+:root[data-look="b"] .pta li {
+  grid-template-columns: 1fr;
+  align-items: start;
+  align-content: start;
+  gap: 14px;
+}
+
+:root[data-look="b"] .pta li + li {
+  margin-top: 0;
+}
+
+:root[data-look="b"] .pta .mark {
+  width: 44px;
+  height: 44px;
+}
+
+:root[data-look="b"] .pta-word {
+  font-size: 1.625rem;
+}
+
+:root[data-look="b"] .pta-line {
+  margin-top: 6px;
+}
+
+/* Doors: plain links in two columns, no boxes */
+:root[data-look="b"] .door-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 56px;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+}
+
+:root[data-look="b"] .door-list li,
+:root[data-look="b"] .door-list li + li {
+  border-left: 0;
+  border-top: 1px solid var(--line);
+}
+
+:root[data-look="b"] .door {
+  padding: 22px 0 28px;
+  border-top: 0;
+}
+
+:root[data-look="b"] .door:hover {
+  background: none;
+}
+
+:root[data-look="b"] .door:focus-visible {
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+:root[data-look="b"] .door-name {
+  font-size: 1.5rem;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+:root[data-look="b"] .door:hover .door-name {
+  text-decoration-thickness: 4px;
+}
+
+/* Help at the bottom: a soft box inside the page width, not a full-width band */
+:root[data-look="b"] .help-band {
+  background: none;
+  border-top: 0;
+}
+
+:root[data-look="b"] .help-band-inner {
+  width: calc(100% - 2 * var(--gutter));
+  max-width: calc(var(--wrap) - 2 * var(--gutter));
+  padding: 28px 32px;
+  background: var(--surface);
+  border-radius: 12px;
+}
+
+:root[data-look="b"] .site-footer {
+  padding-top: 28px;
+}
+
+/* Inner pages */
+:root[data-look="b"] .split section {
+  border: 0;
+}
+
+:root[data-look="b"] .soon {
+  border: 0;
+  border-radius: 6px;
+  background: var(--hover-tint);
+  padding: 6px 12px;
+}
+
+:root[data-look="b"] .soon::before {
+  display: none;
+}
+
+:root[data-look="b"] .route dl {
+  border: 0;
+  border-radius: 8px;
+}
+
+:root[data-look="b"] .sample {
+  border-radius: 4px;
+}
+
+:root[data-look="b"] .wip {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+:root[data-look="b"] .wip a {
+  color: var(--ink);
+}
+
+:root[data-look="b"] .wip :focus-visible {
+  outline-color: var(--ink);
+}
+
+@media (max-width: 720px) {
+  :root[data-look="b"] .pta {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  :root[data-look="b"] .pta li {
+    grid-template-columns: 44px 1fr;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 560px) {
+  :root[data-look="b"] .door-list {
+    grid-template-columns: 1fr;
+  }
+
+  :root[data-look="b"] .help-band-inner {
+    padding: 24px 20px;
+  }
+}
+
+/* =====================================================================
+   C: Example first
+   Ngoc's own navy as the background (not near-black). The home page opens
+   on a real kind of message, with Pause, Think, Act beside it. Lime is kept
+   for Get help only; the doors are a simple list.
+   ===================================================================== */
+
+:root[data-look="c"] {
+  --paper: #0b1a36;
+  --surface: #132a4f;
+  --ink: #f4f7fb;
+  --ink-soft: #bccadd;
+  --line: #2b4675;
+  --hover-tint: #16305a;
+  --tile: #132a4f;
+  --help-bg: #c1ff71;
+  --help-bg-hover: #d4ff9a;
+  --help-text: #0b1a36;
+  --band-bg: #132a4f;
+  --band-edge: #132a4f;
+  --on-band: #f4f7fb;
+  --on-band-soft: #bccadd;
+  --radius: 6px;
+}
+
+:root[data-look="c"] .site-header {
+  background: var(--paper);
+  border-bottom-color: var(--line);
+}
+
+:root[data-look="c"] .help-link {
+  padding-inline: 20px;
+  border-radius: 6px;
+}
+
+:root[data-look="c"] .help-link::before {
+  display: none;
+}
+
+:root[data-look="c"] .help-link[aria-current="page"] {
+  box-shadow: 0 0 0 3px var(--paper), 0 0 0 5px var(--help-bg);
+}
+
+:root[data-look="c"] .help-band .help-link[aria-current="page"] {
+  box-shadow: 0 0 0 3px var(--surface), 0 0 0 5px var(--help-bg);
+}
+
+:root[data-look="c"] .theme-toggle {
+  border-radius: 6px;
+  background: var(--paper);
+}
+
+/* Home: headline across the top, then the example message and the steps side by side */
+:root[data-look="c"] .hero {
+  grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+  grid-template-areas:
+    "intro intro"
+    "example steps";
+  gap: 40px 72px;
+  align-items: start;
+  padding-block: 56px 64px;
+}
+
+:root[data-look="c"] .hero > div {
+  grid-area: intro;
+}
+
+:root[data-look="c"] .hero h1 {
+  max-width: 24ch;
+  font-size: clamp(2.25rem, 3.6vw, 3.125rem);
+  line-height: 1.1;
+}
+
+:root[data-look="c"] .hero .lead {
+  margin-top: 16px;
+  max-width: 38rem;
+}
+
+:root[data-look="c"] .example {
+  grid-area: example;
+  display: block;
+  margin: 0;
+}
+
+:root[data-look="c"] .pta {
+  grid-area: steps;
+  margin-top: 18px;
+}
+
+/* A phone-style text message: the one bright thing on the page */
+.example-screen {
+  max-width: 30rem;
+  padding: 22px 22px 26px;
+  background: #f3f5f8;
+  color: #0b1a36;
+  border-radius: 28px;
+  font-family: -apple-system, system-ui, "Segoe UI", sans-serif;
+}
+
+.example-from,
+.example-time {
+  margin: 0;
+  text-align: center;
+  color: #4a5566;
+  font-size: 0.875rem; /* 14px, the floor */
+  line-height: 1.35;
+}
+
+.example-from {
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.example-bubble {
+  margin: 16px 0 0;
+  max-width: 26rem;
+  padding: 14px 18px;
+  background: #e2e6eb;
+  border-radius: 20px 20px 20px 6px;
+  font-size: 1.0625rem;
+  line-height: 1.45;
+}
+
+.example-link {
+  color: #0b4fbf;
+  text-decoration: underline;
+  overflow-wrap: anywhere;
+}
+
+.example figcaption {
+  margin-top: 14px;
+  color: var(--ink-soft);
+  font-size: 1rem;
+}
+
+/* Doors: a simple list, one audience per row */
+:root[data-look="c"] .door-list {
+  grid-template-columns: 1fr;
+  background: none;
+  border: 0;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+}
+
+:root[data-look="c"] .door-list li,
+:root[data-look="c"] .door-list li + li {
+  border-left: 0;
+  border-top: 0;
+  border-bottom: 1px solid var(--line);
+}
+
+:root[data-look="c"] .door {
+  display: grid;
+  grid-template-columns: 12rem minmax(0, 1fr);
+  align-items: baseline;
+  gap: 8px 24px;
+  padding: 20px 16px;
+  border-top: 0;
+}
+
+:root[data-look="c"] .door:hover {
+  background: var(--hover-tint);
+}
+
+:root[data-look="c"] .door:focus-visible {
+  outline-offset: -3px;
+  border-radius: 4px;
+}
+
+:root[data-look="c"] .door-line {
+  margin-top: 0;
+}
+
+/* Inner pages */
+:root[data-look="c"] .split section {
+  border: 0;
+}
+
+:root[data-look="c"] .soon {
+  border-style: solid;
+  border-radius: 6px;
+}
+
+:root[data-look="c"] .soon::before {
+  display: none;
+}
+
+:root[data-look="c"] .route dl {
+  border: 0;
+}
+
+:root[data-look="c"] .sample {
+  border-radius: 4px;
+}
+
+:root[data-look="c"] .wip {
+  background: var(--surface);
+}
+
+@media (max-width: 900px) {
+  :root[data-look="c"] .hero {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "intro"
+      "example"
+      "steps";
+    gap: 32px;
+  }
+
+  :root[data-look="c"] .pta {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  :root[data-look="c"] .door {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding-inline: 4px;
+  }
+}
