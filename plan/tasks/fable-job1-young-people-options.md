@@ -2,7 +2,7 @@
 type: Task
 title: "Fable job 1: Young people options (age groups, content options, app teasers, walk-through)"
 project: website
-status: ready
+status: done
 runs_on: Claude Fable, as a subagent
 ---
 
