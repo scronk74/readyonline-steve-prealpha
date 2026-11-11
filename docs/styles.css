@@ -1227,3 +1227,93 @@ main .doors .young-doors li:nth-child(3) { border-top: 0; }
   :root[data-option="c"] .seniors-card ul { margin-block: 12px; }
   :root[data-option="c"] .seniors-card li + li { margin-top: 6px; }
 }
+
+/* ---------- Parents: shared guidance, conversation options and printable cards ---------- */
+.parents-page {
+  width: 100%;
+  font-size: max(18px, 1em);
+  line-height: 1.7;
+}
+.parents-copy { max-width: 48rem; }
+:root .parents-page.prose h2 { line-height: 1.3; }
+:root .parents-page.prose h3 { line-height: 1.35; }
+.parents-page h2[id], .parents-page h3[id], .parents-conversation { scroll-margin-top: 24px; }
+.parents-page .help-now { max-width: none; }
+.parents-page .help-now h2 { font-size: 1.5rem; }
+.parents-page .parents-copy > h2 { margin-top: 40px; }
+.parents-page .parents-copy > .seniors-section { margin-top: 48px; }
+.parents-bottom > .seniors-section + .seniors-section {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+.parents-bottom > .seniors-section > .proposal { margin-bottom: 16px; }
+.parents-links .parents-label-b, .parents-links .parents-label-c { display: none; }
+:root[data-option="b"] .parents-links .parents-label-a,
+:root[data-option="c"] .parents-links .parents-label-a { display: none; }
+:root[data-option="b"] .parents-links .parents-label-b,
+:root[data-option="c"] .parents-links .parents-label-c { display: inline; }
+/* Keep real table semantics and allow keyboard scrolling within the table box. */
+.parents-table-scroll { max-width: 100%; overflow-x: auto; margin-block: 24px; }
+.parents-table-scroll .seniors-table { min-width: 32rem; margin-top: 0; }
+.parents-table-scroll:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.parents-card { max-width: 42rem; }
+.parents-page .parents-card > h3:first-child { margin-top: 0; }
+.parents-walkthrough .walk-controls { margin-top: 0; }
+@media (max-width: 480px) {
+  .parents-page .callout { padding: 20px 16px; }
+}
+@media print {
+  /* With C showing, print two pen-and-paper cards, each intact on its own page. */
+  :root[data-option="c"] body:has(main.parents-page) {
+    --ink: #000;
+    --ink-soft: #000;
+    --surface: #fff;
+    --paper: #fff;
+    --line: #000;
+    color-scheme: light;
+    display: block;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+  }
+  :root[data-option="c"] body:has(main.parents-page) > :not(main),
+  :root[data-option="c"] .parents-copy > :not(.parents-conversation),
+  :root[data-option="c"] .parents-option[data-option="c"] > :not(.parents-card) { display: none; }
+  :root[data-option="c"] .parents-page.prose,
+  :root[data-option="c"] .parents-copy,
+  :root[data-option="c"] .parents-conversation,
+  :root[data-option="c"] .parents-option {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  :root[data-option="c"] .parents-page .parents-card {
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid var(--ink);
+    border-radius: 0;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    font: 18px/1.4 Arial, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    box-shadow: none;
+  }
+  :root[data-option="c"] .parents-page .parents-card + .parents-card {
+    break-before: page;
+    page-break-before: always;
+  }
+  :root[data-option="c"] .parents-card h3 {
+    margin: 0;
+    font: 700 22px/1.3 Arial, sans-serif;
+    letter-spacing: normal;
+    color: var(--ink);
+  }
+  :root[data-option="c"] .parents-card strong { font-weight: 700; }
+}
