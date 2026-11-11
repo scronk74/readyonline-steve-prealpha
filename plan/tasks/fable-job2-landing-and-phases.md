@@ -2,7 +2,7 @@
 type: Task
 title: "Fable job 2: landing page, phases and Steve's talking points"
 project: website
-status: ready
+status: done
 runs_on: Claude Fable, as a subagent
 ---
 
