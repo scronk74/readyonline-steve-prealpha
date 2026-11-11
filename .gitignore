@@ -6,3 +6,6 @@
 .DS_Store
 node_modules/
 *.log
+
+# Local content drafts (may hold Ngoc's wording or internal material; never commit)
+drafts/
