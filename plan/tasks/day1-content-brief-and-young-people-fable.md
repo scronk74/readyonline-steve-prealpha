@@ -2,7 +2,7 @@
 type: Task
 title: "Day 1 (Fable): Slice 1 content brief and Young people drafts"
 project: website
-status: ready
+status: done
 runs_on: Claude Fable, as a subagent
 ---
 
