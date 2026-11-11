@@ -3622,3 +3622,41 @@ body.has-look-panel.look-panel-open {
     align-items: start;
   }
 }
+
+/* =====================================================================
+   Shared phone header for every design (added by Claude after review):
+   logo, light/dark and Get help stay on the top row, the six links below,
+   so Get help sits in the same place whichever design is shown.
+   ===================================================================== */
+
+@media (max-width: 480px) {
+  :root[data-look] .header-inner {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    grid-template-areas:
+      "brand toggle help"
+      "nav nav nav";
+    gap: 10px;
+  }
+
+  :root[data-look] .brand {
+    gap: 8px;
+    font-size: 1.125rem;
+  }
+
+  :root[data-look] .brand .mark {
+    width: 28px;
+    height: 28px;
+  }
+
+  :root[data-look] .theme-toggle {
+    grid-area: toggle;
+  }
+
+  :root[data-look] .header-inner .help-link {
+    grid-area: help;
+    width: auto;
+    justify-self: end;
+    padding-inline: 14px;
+    font-size: 1rem;
+  }
+}
