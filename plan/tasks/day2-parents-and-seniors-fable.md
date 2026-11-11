@@ -2,11 +2,13 @@
 type: Task
 title: "Day 2 (Fable): Parents and Seniors drafts"
 project: website
-status: ready
+status: superseded
 runs_on: Claude Fable, as a subagent
 ---
 
 # Day 2 (Fable): Parents and Seniors drafts
+
+**Superseded (2026-11-10)** by `plan/fable-content-plan.md`: Seniors is now job 3, and Parents is job 4. Don't run this file.
 
 Steve wants the content work in this task done by **Claude Fable**, not by the session that opens this file. Steve asked for this subagent; that is his go-ahead for one subagent under his token rule. It follows Day 1 (`plan/tasks/day1-content-brief-and-young-people-fable.md`).
 
