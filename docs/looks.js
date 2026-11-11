@@ -6,6 +6,12 @@
 (function () {
   var LOOK_KEY = "readyonline-design";
   var THEME_KEY = "readyonline-theme";
+  var OPTION_KEY = "readyonline-option";
+  var option = "a";
+  try {
+    var savedOption = localStorage.getItem(OPTION_KEY);
+    if (/^[abc]$/.test(savedOption)) option = savedOption;
+  } catch (e) {}
   var GROUPS = [
     ["Ngoc's colours", [
       ["current", "A", "Current"],
@@ -26,6 +32,7 @@
   });
 
   var root = document.documentElement;
+  root.setAttribute("data-option", option);
   var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
   var look = "current";
   try {
@@ -106,6 +113,37 @@
       });
       options.appendChild(group);
     });
+    if (document.querySelector("main [data-option]")) {
+      var contentGroup = el("div", "look-group content-option-group");
+      contentGroup.setAttribute("role", "group");
+      contentGroup.setAttribute("aria-labelledby", "content-option-label");
+      var contentLabel = el("span", "look-group-label", "Content option");
+      contentLabel.id = "content-option-label";
+      contentGroup.appendChild(contentLabel);
+      var optionButtons = [];
+      function applyOption() {
+        root.setAttribute("data-option", option);
+        optionButtons.forEach(function (button) {
+          button.setAttribute("aria-pressed", button.value === option ? "true" : "false");
+        });
+      }
+      ["a", "b", "c"].forEach(function (value) {
+        var button = el("button");
+        button.type = "button";
+        button.value = value;
+        button.appendChild(el("strong", "", value.toUpperCase()));
+        button.addEventListener("click", function () {
+          option = value;
+          try { localStorage.setItem(OPTION_KEY, option); } catch (e) {}
+          applyOption();
+        });
+        optionButtons.push(button);
+        contentGroup.appendChild(button);
+      });
+      applyOption();
+      options.appendChild(contentGroup);
+      document.body.classList.add("has-content-options");
+    }
     panel.appendChild(options);
 
     // Open on laptops, folded on phones so it doesn't cover the page.

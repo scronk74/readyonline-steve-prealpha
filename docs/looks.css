@@ -143,6 +143,22 @@ body.has-look-panel.look-panel-open {
   }
 }
 
+/* Content review: reuse the panel row and fold it with the design choices. */
+.opt-tag {
+  display: inline-block;
+  margin: 0;
+  padding: 6px 10px;
+  background: #ffffff;
+  color: #0b1a36;
+  border: 2px solid #0b1a36;
+  border-radius: 8px;
+  font: 400 15px/1.4 "Avenir Next", Avenir, "Segoe UI", system-ui, sans-serif;
+}
+body.has-content-options.has-look-panel.look-panel-open { padding-bottom: 204px; }
+@media (max-width: 640px) {
+  body.has-content-options.has-look-panel.look-panel-open { padding-bottom: 72px; }
+}
+
 /* ---------- Examples: each design shows only its own ---------- */
 
 .ex {
@@ -1160,6 +1176,8 @@ body.has-look-panel.look-panel-open {
 
 /* Inner pages retain the same measure and unboxed vertical rhythm. */
 :root[data-look="calm"] .page { padding-block: 48px 64px; }
+:root[data-look="calm"] .young-page { max-width: 1200px; }
+:root[data-look="calm"] .age-section { max-width: 42rem; }
 
 :root[data-look="calm"] .soon {
   display: block;
@@ -2269,6 +2287,12 @@ body.has-look-panel.look-panel-open {
   font-size: 1.125rem;
   line-height: 1.5;
 }
+
+/* Three smaller young people's signs retain the design's inset border and arrow. */
+:root[data-look="signpost"] .young-doors .door { padding-right: 48px; }
+:root[data-look="signpost"] .young-doors .door::after { width: 18px; height: 18px; right: 16px; }
+:root[data-look="signpost"] .door-proposal { color: var(--ink); }
+
 
 :root[data-look="signpost"] .help-band {
   background: var(--band-bg);
