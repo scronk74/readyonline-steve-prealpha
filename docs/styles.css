@@ -225,6 +225,19 @@ a {
   outline-color: var(--lime);
 }
 
+/* Draft notice: on every page during the review period. Remove at launch,
+   together with the robots meta tag in each page's head. */
+.draft-note {
+  border-bottom: 1px solid var(--line);
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.5;
+}
+
+.draft-note p {
+  margin-block: 0;
+  padding-block: 8px;
+}
+
 /* ---------- Header ---------- */
 
 .site-header {
