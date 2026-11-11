@@ -2,7 +2,7 @@
 type: Task
 title: "Fable job 4: Parents"
 project: website
-status: ready
+status: done
 runs_on: Claude Fable, as a subagent
 ---
 
