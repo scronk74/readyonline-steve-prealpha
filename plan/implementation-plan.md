@@ -16,6 +16,9 @@ Steve decides; this is a working draft. **Writer for this repo:** the Claude ses
 - viewed with Live Server and ready for GitHub Pages
 - JavaScript only for optional extras; core content works without it
 - **a demo for Steve and Ngoc:** while it's on Pages, only they use it. Nothing on it pretends to be a working help service.
+- **a review space, not a launch** (Steve, 2026-11-10): for about the next week, Steve shares the Pages site with Ngoc to review. Draft and test wording may go up so she can react to it. Proposals she hasn't agreed to are labelled as proposals. **Caveat:** the repo is public and GitHub Pages has no access control, so anyone with the link can open the site, and search engines may find it. "Not public" means not launched or announced. The "Nothing private" rule still applies in full.
+- **Under-13s are a proposal under review** (Steve, 2026-11-10): Ngoc's original site has no material for children under 13 or 14, possibly on purpose. Any Kids content is a proposal for her to review, not a decision.
+- **Next plan:** once Steve and Ngoc agree on the direction for the site, Steve needs an implementation plan for it.
 
 **Reviews:**
 - scope guard and fact-checker inline, always
@@ -59,7 +62,7 @@ Steve decides; this is a working draft. **Writer for this repo:** the Claude ses
 
 ## Later slices (outline; detailed when each starts)
 
-- **Slice 1: Core audiences.** Young people hub (Kids and Teens), Parents, Seniors: first drafts from Ngoc's material by True North. Menu-label test ("Young people" vs "Kids & Teens") with kids and teens separately, with a parent's consent and the child's own agreement.
+- **Slice 1: Core audiences.** Young people hub (Kids and Teens), Parents, Seniors: first drafts from Ngoc's material by True North. The Kids section is a proposal for Ngoc to review (see the approach above). Drafts live in `drafts/slice1/` (gitignored). Menu-label test ("Young people" vs "Kids & Teens") with kids and teens separately, with a parent's consent and the child's own agreement.
 - **Slice 2: Trust and evidence.** Research highlights (checked totals and a methods note), About/contact/privacy, app teasers with the early-access link once Ngoc agrees to its use.
 - **Slice 3: Guides and demo.** First setup guide (Snapchat) with a "last checked" date and approval; verified Get help details replace the sample numbers and the banner; then the teen practice demo (self-contained, nothing saved).
 
@@ -70,6 +73,7 @@ Steve decides; this is a working draft. **Writer for this repo:** the Claude ses
 
 ## Open questions (asked in chat, one at a time)
 
+- Whether the site speaks to children under 13 at all (Ngoc's site doesn't, possibly on purpose). A question for Ngoc.
 - Whether the footer credit names Ngoc (it says "its founder" for now).
 - Reusing text from Ngoc's current lessons needs her OK (Slice 1 onwards).
 - The core message, to be agreed with Ngoc.
