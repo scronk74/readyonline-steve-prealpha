@@ -1122,3 +1122,108 @@ main .doors .young-doors li:nth-child(3) { border-top: 0; }
   .worked-example { grid-template-columns: minmax(0, 1fr); gap: 24px; }
   .home-habit { margin-top: 16px; }
 }
+
+/* ---------- Seniors: generous reading measure and a card to keep ---------- */
+.seniors-page {
+  width: 100%;
+  font-size: max(18px, 1em);
+  line-height: 1.7;
+}
+.seniors-copy { max-width: 48rem; }
+.seniors-page .help-now { max-width: none; }
+:root .seniors-page.prose h2 { line-height: 1.3; }
+:root .seniors-page.prose h3 { line-height: 1.35; }
+.seniors-page .help-now h2 { font-size: 1.5rem; }
+.seniors-links { margin-block: 28px 40px; }
+.seniors-links ul { list-style: none; padding: 0; }
+.seniors-links li + li { margin-top: 4px; }
+.seniors-links a { display: inline-block; padding-block: 8px; }
+.seniors-section { scroll-margin-top: 24px; }
+.seniors-option {
+  margin-block: 40px;
+  padding-top: 28px;
+  border-top: 2px solid var(--line);
+}
+.seniors-option h2 { margin-top: 40px; }
+.seniors-option .opt-tag + h2 { margin-top: 20px; }
+.seniors-bottom { padding-top: 32px; }
+.seniors-bottom .seniors-section + .seniors-section {
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+}
+.source-line {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.seniors-page h2[id] { scroll-margin-top: 24px; }
+.seniors-card { break-inside: avoid; }
+.write-line {
+  display: inline-block;
+  width: min(100%, 16rem);
+  height: 1.3em;
+  border-bottom: 1px solid currentColor;
+  vertical-align: bottom;
+}
+.seniors-table {
+  width: 100%;
+  margin-top: 24px;
+  border-collapse: collapse;
+  table-layout: fixed;
+  text-align: left;
+  line-height: 1.6;
+}
+.seniors-table th, .seniors-table td {
+  padding: 16px 12px;
+  border: 1px solid var(--line);
+  vertical-align: top;
+  overflow-wrap: break-word;
+}
+.seniors-table th { background: var(--surface); }
+@media (max-width: 480px) {
+  .seniors-page .callout { padding: 20px 16px; }
+  .seniors-table th, .seniors-table td { padding: 12px 8px; }
+}
+@media print {
+  /* With C selected, the browser's print command prints just the pen-and-paper card. */
+  :root[data-option="c"] body:has(main.seniors-page) {
+    --ink: #000;
+    --surface: #fff;
+    --paper: #fff;
+    color-scheme: light;
+    display: block;
+    min-height: 0;
+    padding: 0;
+    background: var(--paper);
+    color: var(--ink);
+  }
+  :root[data-option="c"] body:has(.seniors-page) > :not(main),
+  :root[data-option="c"] .seniors-copy > :not(.seniors-option[data-option="c"]),
+  :root[data-option="c"] .seniors-option[data-option="c"] > :not(.seniors-card) {
+    display: none;
+  }
+  :root[data-option="c"] .seniors-page.prose,
+  :root[data-option="c"] .seniors-page .seniors-copy,
+  :root[data-option="c"] .seniors-page .seniors-option {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+  :root[data-option="c"] .seniors-page .seniors-card {
+    margin: 0;
+    padding: 18px;
+    border: 1px solid var(--ink);
+    border-radius: 0;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.4;
+    background: var(--paper);
+    color: var(--ink);
+  }
+  :root[data-option="c"] .seniors-card p + p { margin-top: 12px; }
+  :root[data-option="c"] .seniors-card ul { margin-block: 12px; }
+  :root[data-option="c"] .seniors-card li + li { margin-top: 6px; }
+}
