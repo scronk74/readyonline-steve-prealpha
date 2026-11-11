@@ -32,7 +32,6 @@
   });
 
   var root = document.documentElement;
-  root.setAttribute("data-option", option);
   var mq = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
   var look = "current";
   try {
@@ -113,7 +112,14 @@
       });
       options.appendChild(group);
     });
-    if (document.querySelector("main [data-option]")) {
+    var availableOptions = [];
+    document.querySelectorAll("main [data-option]").forEach(function (node) {
+      var value = node.getAttribute("data-option");
+      if (value && availableOptions.indexOf(value) === -1) availableOptions.push(value);
+    });
+    if (availableOptions.length) {
+      // A saved option from another page must not leave this page empty.
+      if (availableOptions.indexOf(option) === -1) option = availableOptions[0];
       var contentGroup = el("div", "look-group content-option-group");
       contentGroup.setAttribute("role", "group");
       contentGroup.setAttribute("aria-labelledby", "content-option-label");
@@ -127,7 +133,7 @@
           button.setAttribute("aria-pressed", button.value === option ? "true" : "false");
         });
       }
-      ["a", "b", "c"].forEach(function (value) {
+      availableOptions.forEach(function (value) {
         var button = el("button");
         button.type = "button";
         button.value = value;

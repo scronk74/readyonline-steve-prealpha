@@ -966,3 +966,159 @@ main .doors .young-doors li:nth-child(3) { border-top: 0; }
 @media print {
   .age-section .callout { break-inside: avoid; }
 }
+
+/* ---------- Home: one heading, two progressive content options ---------- */
+:root .home-page {
+  width: 100%;
+  max-width: 1240px;
+  padding-bottom: 64px;
+}
+:root .home-page .home-top.hero {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  grid-template-areas: "heading doors" "intro doors" "habit habit";
+  grid-template-rows: min-content 1fr min-content;
+  align-items: start;
+  gap: 20px 48px;
+  padding-block: 32px 0;
+}
+:root .home-page .home-top.hero > h1 {
+  grid-area: heading;
+  max-width: 22ch;
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  line-height: 1.13;
+}
+:root .home-page .home-option { margin: 0; max-width: none; grid-area: auto; }
+:root:not([data-option]) .home-page .home-option[data-option="a"],
+:root[data-option="a"] .home-page .home-option[data-option="a"],
+:root[data-option="b"] .home-page .home-option[data-option="b"] { display: contents; }
+.home-intro { grid-area: intro; min-width: 0; }
+:root .home-page .home-top.hero .lead {
+  margin-top: 12px;
+  max-width: 38rem;
+  font-size: 1.125rem;
+  line-height: 1.55;
+}
+.home-help {
+  margin-top: 20px;
+  padding: 14px 18px;
+  border-left: 4px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+:root .home-page .doors {
+  grid-area: doors;
+  min-width: 0;
+  padding: 0;
+}
+:root .home-page .doors h2 { font-size: 1.5rem; margin-bottom: 10px; }
+:root .home-page .doors .doors-young-label { margin: 0 0 6px; font-size: 1rem; }
+:root .home-page .doors .door-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  margin: 0;
+}
+:root .home-page .doors .adult-doors { margin-top: 10px; }
+:root .home-page .doors .door-list li { min-width: 0; border-left: 0; }
+:root .home-page .doors .door-list li + li { border-top: 1px solid var(--line); }
+:root .home-page .doors .door {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr);
+  align-items: start;
+  gap: 4px 16px;
+  padding: 6px 14px;
+}
+:root .home-page .doors .door-name {
+  grid-column: 1;
+  grid-row: 1;
+  font-size: 1.125rem;
+  line-height: 1.35;
+  text-underline-offset: 4px;
+}
+:root .home-page .doors .door-line {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  margin-top: 0;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+:root .home-page .doors .door-proposal,
+:root .home-page .doors .door-status {
+  display: block;
+  grid-column: 1 / -1;
+  margin-top: 0;
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+:root .home-page .doors .door-proposal { grid-row: 3; }
+:root .home-page .doors .door-status { grid-column: 1; grid-row: 2; }
+.doors-note { margin-top: 12px; font-size: 1rem; line-height: 1.5; }
+.home-habit { grid-area: habit; margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--line); }
+.home-habit h2 { font-size: 1.75rem; margin-bottom: 28px; }
+.home-habit > p { margin-top: 28px; }
+:root .home-page .home-habit .pta { grid-area: auto; }
+.home-section { max-width: 48rem; margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--line); }
+.home-section h2 { font-size: 1.75rem; }
+
+/* A made-up message is real text, with no working address or animation. */
+:root[data-option="b"] .home-page .home-top.hero {
+  grid-template-areas: "heading intro" "worked worked" "doors doors";
+  grid-template-rows: auto;
+}
+.worked-example {
+  grid-area: worked;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 16px 48px;
+  margin-top: 12px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.worked-message figure { margin: 16px 0 0; }
+.worked-message blockquote {
+  margin: 0;
+  padding: 20px;
+  border: 1px solid var(--ink-soft);
+  border-radius: 20px 20px 20px 4px;
+  background: var(--surface);
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+.worked-message figcaption { margin-top: 10px; color: var(--ink-soft); font-size: 0.875rem; }
+.worked-steps { margin: 0; padding-left: 1.5em; }
+.worked-steps li + li { margin-top: 14px; }
+.worked-after, .way-in { grid-column: 1 / -1; }
+.way-in { line-height: 1.8; }
+:root[data-option="b"] .home-page .doors { margin-top: 36px; max-width: 48rem; }
+
+/* ---------- Building in phases: prose and the shared app drawings ---------- */
+.building-page { width: 100%; }
+.building-intro { max-width: 46rem; }
+.building-intro > p { margin-top: 16px; }
+.building-intro > p:first-of-type { font-size: 1.3125rem; color: var(--ink-soft); }
+.building-phase { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--line); }
+.building-phase > p, .building-phase > ul, .building-phase > h2, .building-phase > h3, .building-phase > .prose { max-width: 48rem; }
+.building-phase .app-teasers { margin-top: 32px; padding-top: 24px; }
+.building-phase .app-teasers > h3 { margin-top: 0; font-size: 1.5rem; }
+@media (max-width: 999px) {
+  :root .home-page .home-top.hero,
+  :root[data-option="b"] .home-page .home-top.hero {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "heading" "intro" "doors" "habit";
+    grid-template-rows: auto;
+    gap: 24px;
+  }
+  :root[data-option="b"] .home-page .home-top.hero { grid-template-areas: "heading" "intro" "worked" "doors"; }
+  :root .home-page .home-top.hero > h1 { max-width: 24ch; }
+  :root .home-page .doors { margin-top: 12px; }
+  :root .home-page .doors .door { display: block; padding-block: 16px; }
+  :root .home-page .doors .door-line,
+  :root .home-page .doors .door-proposal,
+  :root .home-page .doors .door-status { margin-top: 8px; }
+  .worked-example { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .home-habit { margin-top: 16px; }
+}

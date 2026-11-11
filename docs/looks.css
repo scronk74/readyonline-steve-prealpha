@@ -3684,3 +3684,38 @@ body.has-content-options.has-look-panel.look-panel-open { padding-bottom: 204px;
     font-size: 1rem;
   }
 }
+
+/* ---------- Review designs on the rebuilt home ----------
+   Examples now follow both top options. Each keeps its original drawing,
+   colours and type; old hero grid-area names must not create implicit tracks. */
+:root .home-page .design-examples > .ex { grid-area: auto; margin-top: 40px; }
+:root .home-page .design-examples > .ex-bold-ring { display: none; }
+:root[data-look="bold"] .home-page .design-examples > .ex-bold-ring { display: block; }
+:root[data-look="bold"] .home-page .design-examples {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: center;
+}
+:root[data-look="bold"] .home-page .ex-bold-ring { max-width: 240px; }
+/* Compact signs retain their inset borders and arrow, with room for every line. */
+:root[data-look="signpost"] .home-page .doors .door {
+  padding: 7px 42px 7px 14px;
+  border-width: 4px;
+}
+:root[data-look="signpost"] .home-page .doors .door-list { gap: 6px; }
+:root[data-look="signpost"] .home-page .doors .door-list li { border: 0; }
+:root[data-look="signpost"] .home-page .doors .door::after {
+  top: 12px;
+  right: 14px;
+  width: 18px;
+  height: 18px;
+}
+:root[data-look="signpost"] .home-page .doors .door-proposal,
+:root[data-look="signpost"] .home-page .doors .door-status { color: var(--ink); }
+@media (max-width: 640px) {
+  :root[data-look="bold"] .home-page .design-examples { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  :root[data-look="bold"] .home-page .design-examples > .ex-bold-ring { max-width: 180px; }
+}
+/* The app drawings need the same three-column measure as on Young people. */
+:root[data-look="calm"] .building-page { max-width: 1200px; }
