@@ -2,7 +2,7 @@
 type: Task
 title: "Fable job 3: Seniors (social media, online learning, scam awareness)"
 project: website
-status: ready
+status: done
 runs_on: Claude Fable, as a subagent
 ---
 
