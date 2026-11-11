@@ -739,27 +739,6 @@ body.has-look-panel.look-panel-open {
 :root[data-look="bold"] .site-footer { color: var(--ink-soft); font-size: 16px; }
 :root[data-look="bold"] .site-footer strong { color: var(--ink); font-weight: 700; }
 
-/* Keep the existing review switch legible if it is present. */
-:root[data-look="bold"] .look-panel {
-  background: var(--surface);
-  color: var(--ink);
-  border-color: var(--line);
-  box-shadow: none;
-}
-
-:root[data-look="bold"] .look-panel button {
-  background: var(--paper);
-  color: var(--ink);
-  border-color: var(--line);
-}
-
-:root[data-look="bold"] .look-panel button[aria-pressed="true"] {
-  background: var(--ink);
-  color: var(--paper);
-}
-
-:root[data-look="bold"] .look-panel button:focus-visible { outline-color: var(--cyan); }
-
 @media (max-width: 1199px) {
   :root[data-look="bold"] .header-inner {
     display: grid;
@@ -905,7 +884,7 @@ body.has-look-panel.look-panel-open {
   border-radius: var(--radius);
 }
 
-/* The same small header stack at every width; help precedes navigation. */
+/* Two calm rows at every width: logo, light/dark and Get help, then the six links. */
 :root[data-look="calm"] .site-header {
   background: var(--paper);
   border-bottom: 1px solid var(--line);
@@ -913,11 +892,11 @@ body.has-look-panel.look-panel-open {
 
 :root[data-look="calm"] .header-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 44px;
-  grid-template-areas: "brand toggle" "help help" "nav nav";
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-areas: "brand toggle help" "nav nav nav";
   align-items: center;
-  gap: 20px 12px;
-  padding-block: 24px;
+  gap: 10px 14px;
+  padding-block: 18px 8px;
 }
 
 :root[data-look="calm"] .brand {
@@ -949,19 +928,26 @@ body.has-look-panel.look-panel-open {
 }
 
 :root[data-look="calm"] .main-nav ul {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 30px;
+}
+
+@media (max-width: 640px) {
+  :root[data-look="calm"] .main-nav ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 16px;
+  }
 }
 
 :root[data-look="calm"] .main-nav a {
-  display: block;
-  width: fit-content;
+  display: inline-block;
   max-width: 100%;
   min-height: 44px;
-  padding: 6px 0;
+  padding: 8px 0;
   border: 0;
-  font-size: 1.25rem;
+  font-size: 1.1875rem; /* 19px */
   font-weight: 400;
   line-height: 1.6;
   text-decoration: underline;
@@ -1332,52 +1318,8 @@ body.has-look-panel.look-panel-open {
 
 :root[data-look="calm"] .site-footer strong { color: var(--ink); }
 
-/* Keep the existing review controls within the same palette and real weights. */
-:root[data-look="calm"] .look-panel {
-  background: var(--surface);
-  color: var(--ink);
-  border-color: var(--line);
-  box-shadow: none;
-  font-size: 1rem;
-}
-
-:root[data-look="calm"] .look-panel-label { font-weight: 600; }
-
-:root[data-look="calm"] .look-panel button {
-  min-height: 44px;
-  background: var(--surface);
-  color: var(--ink);
-  border-color: var(--line);
-  font-weight: 400;
-}
-
-:root[data-look="calm"] .look-panel button:hover { background: var(--hover-tint); }
-
-:root[data-look="calm"] .look-panel button[aria-pressed="true"] {
-  background: var(--help-bg);
-  color: var(--help-text);
-  border-color: var(--help-bg);
-  font-weight: 600;
-}
-
-:root[data-look="calm"] :focus-visible,
-:root[data-look="calm"] .wip :focus-visible,
-:root[data-look="calm"] .help-band :focus-visible,
-:root[data-look="calm"] .look-panel button:focus-visible {
-  outline: 3px solid var(--ink);
-  outline-offset: 4px;
-  border-radius: 4px;
-}
-
 :root[data-look="calm"] .door:focus-visible {
   outline-offset: -5px;
-}
-
-/* A dark inner stroke remains visible against the light help-button fill. */
-:root[data-look="calm"] .help-link:focus-visible,
-:root[data-look="calm"] .help-band .help-link:focus-visible,
-:root[data-look="calm"] .look-panel button[aria-pressed="true"]:focus-visible {
-  box-shadow: inset 0 0 0 3px var(--help-text);
 }
 
 @media (max-width: 480px) {
@@ -1389,6 +1331,20 @@ body.has-look-panel.look-panel-open {
   :root[data-look="calm"] .hero { padding-block: 36px 48px; gap: 32px; }
   :root[data-look="calm"] .page { padding-block: 36px 48px; }
   :root[data-look="calm"] .door { padding-inline: 8px; }
+}
+
+:root[data-look="calm"] :focus-visible,
+:root[data-look="calm"] .wip :focus-visible,
+:root[data-look="calm"] .help-band :focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* A dark inner stroke remains visible against the light help-button fill. */
+:root[data-look="calm"] .help-link:focus-visible,
+:root[data-look="calm"] .help-band .help-link:focus-visible {
+  box-shadow: inset 0 0 0 3px var(--help-text);
 }
 
 /* =====================================================================
@@ -1850,35 +1806,6 @@ body.has-look-panel.look-panel-open {
 }
 
 :root[data-look="kitchen"] .site-footer strong { color: var(--ink); }
-
-/* The existing review switch also follows this palette, if present. */
-:root[data-look="kitchen"] .look-panel {
-  background: var(--surface);
-  color: var(--ink);
-  border-color: var(--line);
-  border-radius: 6px;
-  box-shadow: none;
-  font-size: 1rem;
-}
-
-:root[data-look="kitchen"] .look-panel-label { font-weight: 600; }
-
-:root[data-look="kitchen"] .look-panel button {
-  min-height: 44px;
-  background: var(--surface);
-  color: var(--ink);
-  border-color: var(--line);
-  border-radius: 3px;
-  font-weight: 400;
-}
-
-:root[data-look="kitchen"] .look-panel button[aria-pressed="true"] {
-  background: var(--ink);
-  color: var(--help-text);
-  border-color: var(--ink);
-}
-
-:root[data-look="kitchen"] .look-panel button:focus-visible { outline-color: var(--ink); }
 
 @media (max-width: 1199px) {
   :root[data-look="kitchen"] .header-inner {
@@ -2466,29 +2393,6 @@ body.has-look-panel.look-panel-open {
 :root[data-look="signpost"] .wip a { color: var(--ink); text-decoration: underline; }
 :root[data-look="signpost"] .wip :focus-visible { outline-color: var(--ink); }
 
-/* The optional review UI also uses only available font weights. */
-:root[data-look="signpost"] .look-panel {
-  border-color: var(--line);
-  background: var(--surface);
-  color: var(--ink);
-  box-shadow: none;
-}
-
-:root[data-look="signpost"] .look-panel button {
-  border-color: var(--line);
-  background: var(--paper);
-  color: var(--ink);
-  font-weight: 400;
-}
-
-:root[data-look="signpost"] .look-panel button[aria-pressed="true"] {
-  background: var(--ink);
-  color: var(--paper);
-  font-weight: 600;
-}
-
-:root[data-look="signpost"] .look-panel button:focus-visible { outline-color: var(--ink); }
-
 @media (max-width: 900px) {
   :root[data-look="signpost"] .hero {
     grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
@@ -2984,27 +2888,6 @@ body.has-look-panel.look-panel-open {
 :root[data-look="fieldguide"] .site-footer { padding-block: 32px 44px; color: var(--ink-soft); font-size: 16px; }
 :root[data-look="fieldguide"] .site-footer strong { color: var(--ink); font-weight: 600; }
 
-/* Also keep the optional existing review controls within this type system. */
-:root[data-look="fieldguide"] .look-panel {
-  border-color: var(--line);
-  background: var(--surface);
-  color: var(--ink);
-  border-radius: 4px;
-  box-shadow: none;
-  font-family: var(--plate-font);
-  font-size: 15px;
-}
-:root[data-look="fieldguide"] .look-panel-label { font-weight: 600; }
-:root[data-look="fieldguide"] .look-panel button {
-  border-color: var(--line);
-  background: var(--surface);
-  color: var(--ink);
-  border-radius: 4px;
-  font-weight: 600;
-}
-:root[data-look="fieldguide"] .look-panel button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
-:root[data-look="fieldguide"] .look-panel button:focus-visible { outline-color: var(--lime); }
-
 @media (max-width: 1000px) {
   :root[data-look="fieldguide"] .ex-fieldguide { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   :root[data-look="fieldguide"] .fg-specimen { max-width: 650px; }
@@ -3229,9 +3112,7 @@ body.has-look-panel.look-panel-open {
 
 :root[data-look="harbour"] .help-link::before,
 :root[data-look="harbour"] .help-band .help-link::before {
-  width: 8px;
-  height: 8px;
-  background: var(--help-dot);
+  display: none;
 }
 
 :root[data-look="harbour"] .help-link:hover,
@@ -3631,45 +3512,6 @@ body.has-look-panel.look-panel-open {
 :root[data-look="harbour"] .site-footer strong {
   color: var(--ink);
   font-weight: 600;
-}
-
-/* Keep the optional review switch on the same accessible palette and weights. */
-:root[data-look="harbour"] .look-panel {
-  background: var(--surface);
-  color: var(--ink);
-  border-color: var(--line);
-  border-radius: var(--radius);
-  box-shadow: none;
-  font-size: 1rem;
-  font-weight: 400;
-}
-
-:root[data-look="harbour"] .look-panel-label {
-  font-weight: 600;
-}
-
-:root[data-look="harbour"] .look-panel button {
-  min-height: 44px;
-  background: var(--paper);
-  color: var(--ink);
-  border-color: var(--line);
-  border-radius: 2px;
-  font-weight: 600;
-}
-
-:root[data-look="harbour"] .look-panel button:hover {
-  background: var(--hover-tint);
-}
-
-:root[data-look="harbour"] .look-panel button[aria-pressed="true"] {
-  background: var(--help-bg);
-  color: var(--help-text);
-  border-color: var(--help-bg);
-}
-
-:root[data-look="harbour"] .look-panel button:focus-visible {
-  outline: 3px solid var(--ink);
-  outline-offset: 3px;
 }
 
 @media (max-width: 1199px) {
