@@ -823,7 +823,6 @@ a {
   border-radius: var(--radius);
   background: var(--surface);
 }
-.proposal { color: var(--ink-soft); font-size: 1rem; margin-bottom: 16px; }
 
 /* ---------- Age pages: one short page per group (D-066) ---------- */
 .age-page { width: 100%; }
@@ -835,7 +834,6 @@ a {
 .age-page h2[id], .age-page .walkthrough { scroll-margin-top: 24px; }
 .crumb { margin-bottom: 12px; font-size: 1rem; line-height: 1.5; }
 .crumb a::before { content: "\2190\00a0"; }
-.age-page h1 + .proposal { margin-top: 8px; }
 .walk-help { margin-top: 20px; }
 .grown-up-note { margin-top: 0; }
 .read-aloud {
@@ -851,7 +849,6 @@ a {
 .chooser { padding-block: 8px 24px; }
 .chooser .door-list { margin-top: 8px; }
 .soon-line { color: var(--ink-soft); }
-.proposal-inline { display: block; margin-top: 4px; color: var(--ink-soft); font-size: 1rem; }
 @media (max-width: 480px) {
   .read-aloud { padding: 4px 16px 20px; }
 }
@@ -970,7 +967,6 @@ main .doors .door-list.adult-doors { display: grid; grid-template-columns: repea
 main .doors .young-doors .door { display: block; padding: 24px 20px; }
 main .doors .young-doors .door-name { font-size: clamp(1.125rem, 1.65vw, 1.5rem); line-height: 1.4; }
 main .doors .young-doors .door-line { margin-top: 12px; font-size: 1rem; }
-.door-proposal { display: block; margin-top: 16px; color: var(--ink-soft); font-size: 0.875rem; line-height: 1.5; }
 main .doors .young-doors li { min-width: 0; }
 main .doors .young-doors li:nth-child(3) { border-top: 0; }
 @media (max-width: 760px) {
