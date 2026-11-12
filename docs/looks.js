@@ -1,3 +1,6 @@
+/* PARKED (2026-11-11): no page loads this file. Steve removed the design selector
+   to focus on content; to bring it back, add looks.css and looks.js to every page's <head>
+   and restore "or pick a design" in the footer privacy line. */
 /* Review only: switch between two dark mode designs so Steve and Ngoc can compare them (D-066).
    A "Current" uses Ngoc's colours; H "Night harbour" is a new theme. Remove this file, looks.css
    and the fonts folder once one design is chosen.
