@@ -983,8 +983,8 @@ main .doors .young-doors li:nth-child(3) { border-top: 0; }
 }
 :root .home-page .home-top.hero {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  grid-template-areas: "heading habit" "intro habit" "example habit";
-  grid-template-rows: auto auto 1fr;
+  grid-template-areas: "heading habit" "intro habit";
+  grid-template-rows: auto 1fr;
   align-items: start;
   gap: 20px 72px;
   padding-block: 40px 0;
@@ -1013,7 +1013,111 @@ main .doors .young-doors li:nth-child(3) { border-top: 0; }
   line-height: 1.5;
 }
 .doors-note { margin-top: 12px; font-size: 1rem; line-height: 1.5; }
-.home-example { grid-area: example; max-width: 34rem; margin-top: 4px; }
+/* Three made-up examples in a row: a text, a game chat and a social app message request */
+.home-examples { margin-top: 56px; }
+.home-examples > h2 { font-size: 1.5rem; margin-bottom: 20px; }
+.example-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+  align-items: stretch;
+}
+.example-row > figure { display: flex; flex-direction: column; min-width: 0; margin: 0; }
+.example-row .sms-screen,
+.example-row .dm-screen,
+.example-row .game-screen { flex: 1; max-width: none; }
+.example-row .game-screen { min-height: 0; }
+.example-row figcaption { margin-top: 10px; color: var(--ink-soft); font-size: 0.875rem; line-height: 1.5; }
+@media (max-width: 999px) {
+  .example-row { grid-template-columns: minmax(0, 30rem); gap: 36px; }
+}
+
+/* A made-up social app (no real app's name, logo or look): a message request from a new follower */
+.dm {
+  --dm-screen: #ffffff;
+  --dm-rule: #e2e2e8;
+  --dm-text: #111114;
+  --dm-soft: #5e5e66;
+  --dm-bubble: #efeff4;
+  --dm-accent: #5b3fd1;
+  --dm-accent-text: #ffffff;
+  --dm-avatar: #d9ccff;
+  --dm-avatar-text: #2a1d6e;
+}
+:root[data-theme="dark"] .dm {
+  --dm-screen: #0f0f12;
+  --dm-rule: #2c2c33;
+  --dm-text: #f4f4f6;
+  --dm-soft: #a4a4ae;
+  --dm-bubble: #26262c;
+  --dm-accent: #a996ff;
+  --dm-accent-text: #111114;
+  --dm-avatar: #4b3a99;
+  --dm-avatar-text: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .dm {
+    --dm-screen: #0f0f12;
+    --dm-rule: #2c2c33;
+    --dm-text: #f4f4f6;
+    --dm-soft: #a4a4ae;
+    --dm-bubble: #26262c;
+    --dm-accent: #a996ff;
+    --dm-accent-text: #111114;
+    --dm-avatar: #4b3a99;
+    --dm-avatar-text: #ffffff;
+  }
+}
+.dm-screen {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--dm-rule);
+  border-radius: 28px;
+  background: var(--dm-screen);
+  color: var(--dm-text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  box-shadow: 0 10px 28px rgba(11, 26, 54, 0.12);
+}
+.dm-top { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-bottom: 1px solid var(--dm-rule); }
+.dm-back { flex: none; width: 12px; height: 20px; color: var(--dm-text); }
+.dm-avatar {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--dm-avatar);
+  color: var(--dm-avatar-text);
+  font-weight: 700;
+}
+.dm .dm-name { margin: 0; font-size: 1rem; font-weight: 700; line-height: 1.3; }
+.dm .dm-sub { margin: 0; font-size: 0.875rem; line-height: 1.3; color: var(--dm-soft); }
+.dm-thread { flex: 1; padding: 14px; }
+.dm .dm-request { margin: 0 0 14px; text-align: center; font-size: 0.875rem; line-height: 1.4; color: var(--dm-soft); }
+.dm .dm-bubble {
+  max-width: 82%;
+  margin: 0;
+  padding: 9px 14px;
+  border-radius: 20px 20px 20px 6px;
+  background: var(--dm-bubble);
+  color: var(--dm-text);
+  font-size: 1rem;
+  line-height: 1.4;
+}
+.dm .dm-bubble + .dm-bubble { margin-top: 6px; }
+.dm-actions { display: flex; gap: 8px; padding: 0 14px 16px; }
+.dm-actions span {
+  flex: 1;
+  padding: 8px 6px;
+  border: 1px solid var(--dm-rule);
+  border-radius: 10px;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+.dm-actions .dm-accept { border-color: var(--dm-accent); background: var(--dm-accent); color: var(--dm-accent-text); }
 .home-habit {
   grid-area: habit;
   min-width: 0;
@@ -1129,7 +1233,7 @@ main .doors .young-doors li:nth-child(3) { border-top: 0; }
 @media (max-width: 999px) {
   :root .home-page .home-top.hero {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "heading" "intro" "example" "habit";
+    grid-template-areas: "heading" "intro" "habit";
     grid-template-rows: auto;
     gap: 24px;
   }
