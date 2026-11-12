@@ -2,7 +2,7 @@
 type: Task
 title: "Fable job 5: Trim the demo for Ngoc"
 project: website
-status: in progress
+status: done
 runs_on: Claude Fable, as one subagent the writer keeps talking to
 ---
 
