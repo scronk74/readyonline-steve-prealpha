@@ -1,28 +1,15 @@
-/* Review only: switch between eight dark mode designs so Steve and Ngoc can compare them.
-   A to D use Ngoc's colours; E to H are new themes. Remove this file, looks.css, the fonts
-   folder and the .ex examples on the home page once one design is chosen.
+/* Review only: switch between two dark mode designs so Steve and Ngoc can compare them (D-066).
+   A "Current" uses Ngoc's colours; H "Night harbour" is a new theme. Remove this file, looks.css
+   and the fonts folder once one design is chosen.
    The choice is saved in this browser only (localStorage) and is never sent anywhere.
    Without JavaScript the switch doesn't appear and the site shows design A. */
 (function () {
   var LOOK_KEY = "readyonline-design";
   var THEME_KEY = "readyonline-theme";
-  var OPTION_KEY = "readyonline-option";
-  var option = "a";
-  try {
-    var savedOption = localStorage.getItem(OPTION_KEY);
-    if (/^[abc]$/.test(savedOption)) option = savedOption;
-  } catch (e) {}
+  try { localStorage.removeItem("readyonline-option"); } catch (e) {} // the old content switch
   var GROUPS = [
-    ["Ngoc's colours", [
+    ["Designs", [
       ["current", "A", "Current"],
-      ["example", "B", "Example"],
-      ["bold", "C", "Bold"],
-      ["calm", "D", "Calm"]
-    ]],
-    ["New themes", [
-      ["kitchen", "E", "Kitchen table"],
-      ["signpost", "F", "Signpost"],
-      ["fieldguide", "G", "Field guide"],
       ["harbour", "H", "Night harbour"]
     ]]
   ];
@@ -112,44 +99,6 @@
       });
       options.appendChild(group);
     });
-    var availableOptions = [];
-    document.querySelectorAll("main [data-option]").forEach(function (node) {
-      var value = node.getAttribute("data-option");
-      if (value && availableOptions.indexOf(value) === -1) availableOptions.push(value);
-    });
-    if (availableOptions.length) {
-      // A saved option from another page must not leave this page empty.
-      if (availableOptions.indexOf(option) === -1) option = availableOptions[0];
-      var contentGroup = el("div", "look-group content-option-group");
-      contentGroup.setAttribute("role", "group");
-      contentGroup.setAttribute("aria-labelledby", "content-option-label");
-      var contentLabel = el("span", "look-group-label", "Content option");
-      contentLabel.id = "content-option-label";
-      contentGroup.appendChild(contentLabel);
-      var optionButtons = [];
-      function applyOption() {
-        root.setAttribute("data-option", option);
-        optionButtons.forEach(function (button) {
-          button.setAttribute("aria-pressed", button.value === option ? "true" : "false");
-        });
-      }
-      availableOptions.forEach(function (value) {
-        var button = el("button");
-        button.type = "button";
-        button.value = value;
-        button.appendChild(el("strong", "", value.toUpperCase()));
-        button.addEventListener("click", function () {
-          option = value;
-          try { localStorage.setItem(OPTION_KEY, option); } catch (e) {}
-          applyOption();
-        });
-        optionButtons.push(button);
-        contentGroup.appendChild(button);
-      });
-      applyOption();
-      options.appendChild(contentGroup);
-      document.body.classList.add("has-content-options");
-    }
     panel.appendChild(options);
 
     // Open on laptops, folded on phones so it doesn't cover the page.

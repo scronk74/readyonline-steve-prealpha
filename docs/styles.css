@@ -290,7 +290,7 @@ a {
   border-bottom-color: var(--cyan);
 }
 
-.main-nav a[aria-current="page"] {
+.main-nav a[aria-current] {
   font-weight: 700;
   border-bottom-color: var(--ink);
 }
@@ -780,7 +780,7 @@ a {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
   gap: 24px 40px;
 }
 
@@ -796,7 +796,7 @@ a {
 
 /* ---------- Young people: age sections and shared help ---------- */
 .young-page { width: 100%; }
-.young-page > .lead, .young-page > .age-links, .young-page > p { max-width: 46rem; }
+.young-page > .lead, .young-page > p { max-width: 46rem; }
 .help-now {
   max-width: 48rem;
   margin: 28px 0 24px;
@@ -806,16 +806,7 @@ a {
   color: var(--ink);
   border-radius: var(--radius);
 }
-.age-links { line-height: 2; }
-.age-links + p { margin-top: 12px; }
-.age-anchor, .age-section, .threat-block { scroll-margin-top: 24px; }
-.age-section {
-  max-width: 54rem;
-  margin-block: 48px;
-  padding-block: 32px;
-  border-top: 2px solid var(--line);
-}
-.age-section:target { border-top-color: var(--ink); }
+.age-anchor, .threat-block { scroll-margin-top: 24px; }
 .prose { overflow-wrap: break-word; }
 .prose h2 { font-size: clamp(1.75rem, 3vw, 2.25rem); }
 .prose h3 { font-size: 1.5rem; line-height: 1.35; }
@@ -834,15 +825,37 @@ a {
   background: var(--surface);
 }
 .proposal { color: var(--ink-soft); font-size: 1rem; margin-bottom: 16px; }
-.content-option { margin-top: 28px; }
-.content-option > h3:first-of-type { margin-top: 16px; }
-.shared-bottom { margin-top: 32px; padding-top: 4px; border-top: 1px solid var(--line); }
-/* CSS alone provides the default when scripts are unavailable. */
-.content-option[data-option] { display: none; }
-:root:not([data-option]) .content-option[data-option="a"],
-:root[data-option="a"] .content-option[data-option="a"],
-:root[data-option="b"] .content-option[data-option="b"],
-:root[data-option="c"] .content-option[data-option="c"] { display: block; }
+
+/* ---------- Age pages: one short page per group (D-066) ---------- */
+.age-page { width: 100%; }
+.age-page > :not(.walkthrough) { max-width: 48rem; }
+.age-page > .walkthrough { max-width: 60rem; }
+.age-page > h2 { margin-top: 44px; }
+.age-page > .callout + h2 { margin-top: 40px; }
+.age-page .lead { margin-top: 12px; }
+.age-page h2[id], .age-page .walkthrough { scroll-margin-top: 24px; }
+.crumb { margin-bottom: 12px; font-size: 1rem; line-height: 1.5; }
+.crumb a::before { content: "\2190\00a0"; }
+.age-page h1 + .proposal { margin-top: 8px; }
+.walk-help { margin-top: 20px; }
+.grown-up-note { margin-top: 0; }
+.read-aloud {
+  margin-top: 32px;
+  padding: 4px 24px 24px;
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+}
+.read-aloud > h2 { margin-top: 24px; }
+.read-aloud > h2:first-child { margin-top: 20px; }
+.walkthrough > h2 { margin: 0; font-size: 1.5rem; line-height: 1.4; }
+.walkthrough > h2 + p { margin-top: 12px; }
+.chooser { padding-block: 8px 24px; }
+.chooser .door-list { margin-top: 8px; }
+.soon-line { color: var(--ink-soft); }
+.proposal-inline { display: block; margin-top: 4px; color: var(--ink-soft); font-size: 1rem; }
+@media (max-width: 480px) {
+  .read-aloud { padding: 4px 16px 20px; }
+}
 
 /* ---------- Shared threat disclosure ---------- */
 .threat-block {
@@ -857,53 +870,11 @@ a {
 .threat-block summary h2 { display: inline; font-size: 1.5rem; line-height: 1.4; }
 .threat-block[open] summary { margin-bottom: 24px; }
 
-/* ---------- Future app drawings: neutral frames, real text ---------- */
-.app-teasers { padding-top: 16px; border-top: 2px solid var(--line); }
-.app-teasers > h2 { font-size: 1.75rem; }
-.app-teasers > p { margin-top: 16px; max-width: 46rem; }
-.phone-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-top: 32px; }
-.app-phone { min-width: 0; margin: 0; }
-.phone-screen {
-  max-width: 340px;
-  margin-inline: auto;
-  padding: 24px 16px;
-  border: 3px solid var(--ink-soft);
-  border-radius: 30px;
-  background: var(--surface);
-  color: var(--ink);
-  font-size: 1rem;
-  line-height: 1.5;
-  overflow-wrap: anywhere;
-}
-.phone-screen h3 { margin-top: 20px; font-size: 1.25rem; line-height: 1.4; }
-.phone-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding-bottom: 14px; border-bottom: 1px solid var(--line); font-size: 0.875rem; }
-.phone-top span:last-child { font-weight: 700; }
-.phone-card, .phone-hint { margin-top: 16px; padding: 14px; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; }
-.phone-card p + p { margin-top: 8px; }
-.made-up, .phone-meta { font-size: 0.875rem; color: var(--ink-soft); }
-.buddy-note { display: flex; align-items: start; gap: 12px; margin-top: 16px; }
-.buddy { position: relative; display: block; flex: none; width: 42px; height: 42px; border: 2px solid var(--ink); border-radius: 50%; background: var(--paper); }
-.buddy::before, .buddy::after { content: ""; position: absolute; top: 12px; width: 4px; height: 4px; border-radius: 50%; background: var(--ink); }
-.buddy::before { left: 10px; }
-.buddy::after { right: 10px; }
-.buddy span { position: absolute; left: 11px; top: 21px; width: 16px; height: 9px; border-bottom: 2px solid var(--ink); border-radius: 50%; }
+/* ---------- Sign chips (used by the walk-through) ---------- */
 .sign-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; padding: 0; list-style: none; }
 .sign-chips li { padding: 5px 9px; color: var(--ink); background: var(--paper); border: 1px solid var(--ink-soft); border-radius: 20px; font-size: 0.875rem; line-height: 1.5; }
 .sign-chips .is-lit { background: var(--ink); color: var(--paper); border-color: var(--ink); font-weight: 700; }
 .sign-chips .is-lit::before { content: "✓ "; }
-.phone-move { display: block; padding: 10px 12px; border: 1px solid var(--ink-soft); border-radius: 10px; text-align: center; font-weight: 700; }
-.phone-moves { display: grid; gap: 8px; }
-.phone-meta { margin-top: 18px; }
-.trusted-person { margin-top: 16px; }
-.trusted-person span { display: inline-block; text-decoration: underline; margin-left: 8px; }
-.awareness-bar { height: 10px; margin-top: 12px; border: 1px solid var(--ink-soft); border-radius: 6px; overflow: hidden; }
-.awareness-bar span { display: block; width: 66.6667%; height: 100%; background: var(--ink); }
-.app-phone figcaption { margin-top: 20px; font-size: 1rem; line-height: 1.6; }
-.app-phone figcaption p + p { margin-top: 12px; color: var(--ink-soft); }
-@media (max-width: 1000px) {
-  .phone-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
-  .app-phone { width: 100%; max-width: 38rem; margin-inline: auto; }
-}
 
 /* ---------- Walk-through: numbered list first, optional stepper ---------- */
 .walkthrough { margin-top: 24px; padding: 24px; border: 1px solid var(--line); background: var(--surface); border-radius: var(--radius); }
@@ -925,13 +896,71 @@ a {
 .walk-controls .walk-progress { margin: 0; font-size: 1rem; }
 .walk-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
 .walk-stage { min-width: 0; }
-.walk-chat { padding: 16px; border: 1px solid var(--ink-soft); border-radius: 18px; background: var(--paper); }
-.chat-name { font-size: 1rem; font-weight: 700; }
-.chat-bubble { padding: 12px; border: 1px solid var(--line); border-radius: 12px 12px 12px 2px; background: var(--surface); font-size: 1rem; line-height: 1.5; }
-.chat-reply { margin-left: 24px; border-radius: 12px 12px 2px 12px; }
-.is-paused .walk-chat { background: var(--surface); }
-.is-paused .chat-bubble { color: var(--ink-soft); }
-.chat-empty-reply { margin-top: 20px; min-height: 40px; border: 1px solid var(--ink-soft); border-radius: 10px; }
+/* The free skin: a made-up in-game screen, so the chat reads as a game, not as the site.
+   Fixed game colours in both light and dark mode; no animation. */
+.game-screen {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 430px;
+  overflow: hidden;
+  border: 3px solid #05070c;
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at 64% 17%, #f3e7c4 0 9px, rgba(243, 231, 196, 0.22) 10px 24px, transparent 25px),
+    radial-gradient(ellipse 58% 20% at 22% 60%, #2c4636 97%, transparent 100%),
+    radial-gradient(ellipse 52% 17% at 80% 62%, #263d33 97%, transparent 100%),
+    linear-gradient(180deg, #1d2c50 0%, #46659a 46%, #3b5735 59%, #26391f 100%);
+  color: #f1f3f8;
+  font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+  text-shadow: 0 1px 0 #000000;
+  box-shadow: 0 10px 28px rgba(5, 7, 12, 0.28);
+}
+.game-screen::before {
+  /* the pause steps dim the game behind the chat */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 6, 12, 0);
+  pointer-events: none;
+}
+.is-paused .game-screen::before { background: rgba(4, 6, 12, 0.45); }
+.game-hud {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px 0;
+}
+.game-hp { display: flex; align-items: center; gap: 8px; font-size: 0.875rem; font-weight: 700; }
+.game-hp-bar { display: block; width: 92px; height: 10px; border: 1px solid rgba(255, 255, 255, 0.75); border-radius: 3px; background: rgba(0, 0, 0, 0.55); }
+.game-hp-bar span { display: block; width: 74%; height: 100%; background: #5fe082; }
+.game-timer { margin: 0; padding: 2px 8px; border-radius: 4px; background: #0b0f1c; color: #ffffff; font-size: 0.875rem; font-weight: 700; }
+.game-map { position: relative; flex: none; width: 54px; height: 54px; border: 2px solid rgba(255, 255, 255, 0.75); border-radius: 50%; background: rgba(9, 14, 26, 0.7); }
+.game-map-dot { position: absolute; left: 24px; top: 22px; width: 7px; height: 7px; border-radius: 50%; background: #ffd36b; }
+.game-chatbox {
+  position: relative;
+  width: min(calc(100% - 20px), 23rem);
+  margin: auto 10px 10px;
+  padding: 0 0 8px;
+  border: 1px solid #2a3350;
+  border-radius: 6px;
+  background: #0b0f1c;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+.game-tabs { display: flex; gap: 2px; padding: 0 6px; border-bottom: 1px solid #2a3350; font-size: 0.875rem; font-weight: 700; }
+.game-tabs span { padding: 6px 10px 5px; color: #b9c0d0; border-bottom: 2px solid transparent; }
+.game-tabs .is-on { color: #ffffff; border-bottom-color: #ff9bd2; }
+.game-log { min-height: 7.5em; padding: 8px 10px 0; }
+.game-line { margin: 0; overflow-wrap: anywhere; }
+.game-line + .game-line { margin-top: 6px; }
+.game-channel, .game-who { font-weight: 700; }
+.game-whisper .game-channel, .game-whisper .game-who { color: #ff9bd2; }
+.game-you .game-channel, .game-you .game-who { color: #8ee59b; }
+.game-system { color: #ffd36b; }
+.game-input { margin: 8px 8px 0; padding: 6px 10px; border: 1px solid #3a4462; border-radius: 4px; background: #141a2c; color: #c5cbd8; font-size: 0.875rem; }
 .walk-extra { margin-top: 16px; }
 .walk-extra .walk-habit { font-size: 1.75rem; font-weight: 700; }
 .walk-stage .sign-chips, .walk-stage .walk-moves { padding: 0; list-style: none; }
@@ -950,7 +979,6 @@ a {
 /* There is deliberately no animation, including under reduced motion. */
 
 /* ---------- Home doors: three young people's doors, then two adult doors ---------- */
-main .doors .doors-young-label { margin: 24px 0 12px; font-size: 1rem; line-height: 1.5; }
 main .doors .door-list.young-doors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
 main .doors .door-list.adult-doors { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 24px; }
 main .doors .young-doors .door { display: block; padding: 24px 20px; }
@@ -961,25 +989,23 @@ main .doors .young-doors li { min-width: 0; }
 main .doors .young-doors li:nth-child(3) { border-top: 0; }
 @media (max-width: 760px) {
   main .doors .door-list.young-doors, main .doors .door-list.adult-doors { grid-template-columns: minmax(0, 1fr); }
-  main .doors .young-doors li + li { border-left: 0; border-top: 1px solid var(--line); }
-}
-@media print {
-  .age-section .callout { break-inside: avoid; }
+  main .doors .young-doors li + li,
+  main .doors .young-doors li:nth-child(3) { border-left: 0; border-top: 1px solid var(--line); }
 }
 
-/* ---------- Home: one heading, two progressive content options ---------- */
+/* ---------- Home: the message on the left, the habit on the right ---------- */
 :root .home-page {
   width: 100%;
   max-width: 1240px;
   padding-bottom: 64px;
 }
 :root .home-page .home-top.hero {
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-  grid-template-areas: "heading doors" "intro doors" "habit habit";
-  grid-template-rows: min-content 1fr min-content;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas: "heading habit" "intro habit" "example habit";
+  grid-template-rows: auto auto 1fr;
   align-items: start;
-  gap: 20px 48px;
-  padding-block: 32px 0;
+  gap: 20px 72px;
+  padding-block: 40px 0;
 }
 :root .home-page .home-top.hero > h1 {
   grid-area: heading;
@@ -987,10 +1013,6 @@ main .doors .young-doors li:nth-child(3) { border-top: 0; }
   font-size: clamp(2rem, 3vw, 2.5rem);
   line-height: 1.13;
 }
-:root .home-page .home-option { margin: 0; max-width: none; grid-area: auto; }
-:root:not([data-option]) .home-page .home-option[data-option="a"],
-:root[data-option="a"] .home-page .home-option[data-option="a"],
-:root[data-option="b"] .home-page .home-option[data-option="b"] { display: contents; }
 .home-intro { grid-area: intro; min-width: 0; }
 :root .home-page .home-top.hero .lead {
   margin-top: 12px;
@@ -1008,122 +1030,134 @@ main .doors .young-doors li:nth-child(3) { border-top: 0; }
   font-size: 1rem;
   line-height: 1.5;
 }
-:root .home-page .doors {
-  grid-area: doors;
-  min-width: 0;
-  padding: 0;
-}
-:root .home-page .doors h2 { font-size: 1.5rem; margin-bottom: 10px; }
-:root .home-page .doors .doors-young-label { margin: 0 0 6px; font-size: 1rem; }
-:root .home-page .doors .door-list {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 0;
-  margin: 0;
-}
-:root .home-page .doors .adult-doors { margin-top: 10px; }
-:root .home-page .doors .door-list li { min-width: 0; border-left: 0; }
-:root .home-page .doors .door-list li + li { border-top: 1px solid var(--line); }
-:root .home-page .doors .door {
-  display: grid;
-  grid-template-columns: 9rem minmax(0, 1fr);
-  align-items: start;
-  gap: 4px 16px;
-  padding: 6px 14px;
-}
-:root .home-page .doors .door-name {
-  grid-column: 1;
-  grid-row: 1;
-  font-size: 1.125rem;
-  line-height: 1.35;
-  text-underline-offset: 4px;
-}
-:root .home-page .doors .door-line {
-  grid-column: 2;
-  grid-row: 1 / span 2;
-  margin-top: 0;
-  font-size: 1rem;
-  line-height: 1.4;
-}
-:root .home-page .doors .door-proposal,
-:root .home-page .doors .door-status {
-  display: block;
-  grid-column: 1 / -1;
-  margin-top: 0;
-  color: var(--ink-soft);
-  font-size: 0.875rem;
-  line-height: 1.4;
-}
-:root .home-page .doors .door-proposal { grid-row: 3; }
-:root .home-page .doors .door-status { grid-column: 1; grid-row: 2; }
 .doors-note { margin-top: 12px; font-size: 1rem; line-height: 1.5; }
-.home-habit { grid-area: habit; margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--line); }
-.home-habit h2 { font-size: 1.75rem; margin-bottom: 28px; }
+.home-example { grid-area: example; max-width: 34rem; margin-top: 4px; }
+.home-habit {
+  grid-area: habit;
+  min-width: 0;
+  padding: 28px 32px 32px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.home-habit h2 { font-size: 1.75rem; line-height: 1.25; margin-bottom: 28px; }
 .home-habit > p { margin-top: 28px; }
-:root .home-page .home-habit .pta { grid-area: auto; }
+@media (max-width: 480px) {
+  .home-habit { padding: 20px 16px 24px; }
+  .home-habit h2 { font-size: 1.5rem; margin-bottom: 20px; }
+}
 .home-section { max-width: 48rem; margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--line); }
 .home-section h2 { font-size: 1.75rem; }
 
 /* A made-up message is real text, with no working address or animation. */
-:root[data-option="b"] .home-page .home-top.hero {
-  grid-template-areas: "heading intro" "worked worked" "doors doors";
-  grid-template-rows: auto;
-}
-.worked-example {
-  grid-area: worked;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-  gap: 16px 48px;
-  margin-top: 12px;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-.worked-message figure { margin: 16px 0 0; }
-.worked-message blockquote {
+/* A trimmed phone screenshot of a text (SMS) from an unknown sender.
+   Its own colours, like a phone screen; they follow light and dark mode. */
+.sms {
+  --sms-screen: #ffffff;
+  --sms-bar: #f2f2f7;
+  --sms-rule: #d1d1d6;
+  --sms-text: #000000;
+  --sms-soft: #636366;
+  --sms-bubble: #e9e9eb;
+  --sms-link: #0060d6;
+  --sms-avatar: #8e8e93;
   margin: 0;
-  padding: 20px;
-  border: 1px solid var(--ink-soft);
-  border-radius: 20px 20px 20px 4px;
-  background: var(--surface);
-  color: var(--ink);
+}
+:root[data-theme="dark"] .sms {
+  --sms-screen: #000000;
+  --sms-bar: #1c1c1e;
+  --sms-rule: #38383a;
+  --sms-text: #ffffff;
+  --sms-soft: #a1a1a8;
+  --sms-bubble: #262628;
+  --sms-link: #4aa0ff;
+  --sms-avatar: #6c6c70;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .sms {
+    --sms-screen: #000000;
+    --sms-bar: #1c1c1e;
+    --sms-rule: #38383a;
+    --sms-text: #ffffff;
+    --sms-soft: #a1a1a8;
+    --sms-bubble: #262628;
+    --sms-link: #4aa0ff;
+    --sms-avatar: #6c6c70;
+  }
+}
+.sms-screen {
+  max-width: 26rem;
+  overflow: hidden;
+  border: 1px solid var(--sms-rule);
+  border-radius: 28px;
+  background: var(--sms-screen);
+  color: var(--sms-text);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", system-ui, sans-serif;
+  box-shadow: 0 10px 28px rgba(11, 26, 54, 0.12);
+}
+.sms-top {
+  position: relative;
+  padding: 12px 16px 10px;
+  background: var(--sms-bar);
+  border-bottom: 1px solid var(--sms-rule);
+}
+.sms-back {
+  position: absolute;
+  left: 18px;
+  top: 22px;
+  width: 12px;
+  height: 20px;
+  color: var(--sms-link);
+}
+.sms-contact { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.sms-avatar { width: 40px; height: 40px; }
+.sms-avatar-bg { fill: var(--sms-avatar); }
+.sms-avatar-fg { fill: #ffffff; }
+.sms .sms-number { margin: 0; font-size: 0.875rem; line-height: 1.3; color: var(--sms-text); }
+.sms-chevron { color: var(--sms-soft); }
+.sms-thread { padding: 12px 14px 14px; }
+.sms .sms-meta, .sms .sms-junk {
+  margin: 0;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.35;
+  color: var(--sms-soft);
+}
+.sms .sms-bubble {
+  max-width: 82%;
+  margin: 10px 0 0;
+  padding: 9px 14px;
+  border-radius: 20px 20px 20px 6px;
+  background: var(--sms-bubble);
+  color: var(--sms-text);
+  font-size: 1rem;
+  line-height: 1.4;
   overflow-wrap: anywhere;
 }
-.worked-message figcaption { margin-top: 10px; color: var(--ink-soft); font-size: 0.875rem; }
-.worked-steps { margin: 0; padding-left: 1.5em; }
-.worked-steps li + li { margin-top: 14px; }
-.worked-after, .way-in { grid-column: 1 / -1; }
-.way-in { line-height: 1.8; }
-:root[data-option="b"] .home-page .doors { margin-top: 36px; max-width: 48rem; }
+.sms .sms-junk { margin-top: 12px; }
+.age-page .sms { margin: 20px 0 28px; }
+.sms-junk-link { color: var(--sms-link); }
+.sms figcaption { margin-top: 10px; color: var(--ink-soft); font-size: 0.875rem; }
 
-/* ---------- Building in phases: prose and the shared app drawings ---------- */
+/* ---------- What we're building: Now, Next, Later ---------- */
 .building-page { width: 100%; }
 .building-intro { max-width: 46rem; }
 .building-intro > p { margin-top: 16px; }
 .building-intro > p:first-of-type { font-size: 1.3125rem; color: var(--ink-soft); }
 .building-phase { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--line); }
 .building-phase > p, .building-phase > ul, .building-phase > h2, .building-phase > h3, .building-phase > .prose { max-width: 48rem; }
-.building-phase .app-teasers { margin-top: 32px; padding-top: 24px; }
-.building-phase .app-teasers > h3 { margin-top: 0; font-size: 1.5rem; }
 @media (max-width: 999px) {
-  :root .home-page .home-top.hero,
-  :root[data-option="b"] .home-page .home-top.hero {
+  :root .home-page .home-top.hero {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "heading" "intro" "doors" "habit";
+    grid-template-areas: "heading" "intro" "example" "habit";
     grid-template-rows: auto;
     gap: 24px;
   }
-  :root[data-option="b"] .home-page .home-top.hero { grid-template-areas: "heading" "intro" "worked" "doors"; }
   :root .home-page .home-top.hero > h1 { max-width: 24ch; }
-  :root .home-page .doors { margin-top: 12px; }
-  :root .home-page .doors .door { display: block; padding-block: 16px; }
-  :root .home-page .doors .door-line,
-  :root .home-page .doors .door-proposal,
-  :root .home-page .doors .door-status { margin-top: 8px; }
-  .worked-example { grid-template-columns: minmax(0, 1fr); gap: 24px; }
-  .home-habit { margin-top: 16px; }
+  .home-habit { margin-top: 8px; }
 }
 
-/* ---------- Seniors: generous reading measure and a card to keep ---------- */
+/* ---------- Seniors: generous reading measure ---------- */
 .seniors-page {
   width: 100%;
   font-size: max(18px, 1em);
@@ -1134,20 +1168,9 @@ main .doors .young-doors li:nth-child(3) { border-top: 0; }
 :root .seniors-page.prose h2 { line-height: 1.3; }
 :root .seniors-page.prose h3 { line-height: 1.35; }
 .seniors-page .help-now h2 { font-size: 1.5rem; }
-.seniors-links { margin-block: 28px 40px; }
-.seniors-links ul { list-style: none; padding: 0; }
-.seniors-links li + li { margin-top: 4px; }
-.seniors-links a { display: inline-block; padding-block: 8px; }
 .seniors-section { scroll-margin-top: 24px; }
-.seniors-option {
-  margin-block: 40px;
-  padding-top: 28px;
-  border-top: 2px solid var(--line);
-}
-.seniors-option h2 { margin-top: 40px; }
-.seniors-option .opt-tag + h2 { margin-top: 20px; }
-.seniors-bottom { padding-top: 32px; }
-.seniors-bottom .seniors-section + .seniors-section {
+.seniors-copy > .seniors-section,
+.parents-copy > .seniors-section {
   margin-top: 48px;
   padding-top: 32px;
   border-top: 1px solid var(--line);
@@ -1158,14 +1181,6 @@ main .doors .young-doors li:nth-child(3) { border-top: 0; }
   color: var(--ink-soft);
 }
 .seniors-page h2[id] { scroll-margin-top: 24px; }
-.seniors-card { break-inside: avoid; }
-.write-line {
-  display: inline-block;
-  width: min(100%, 16rem);
-  height: 1.3em;
-  border-bottom: 1px solid currentColor;
-  vertical-align: bottom;
-}
 .seniors-table {
   width: 100%;
   margin-top: 24px;
@@ -1185,50 +1200,8 @@ main .doors .young-doors li:nth-child(3) { border-top: 0; }
   .seniors-page .callout { padding: 20px 16px; }
   .seniors-table th, .seniors-table td { padding: 12px 8px; }
 }
-@media print {
-  /* With C selected, the browser's print command prints just the pen-and-paper card. */
-  :root[data-option="c"] body:has(main.seniors-page) {
-    --ink: #000;
-    --surface: #fff;
-    --paper: #fff;
-    color-scheme: light;
-    display: block;
-    min-height: 0;
-    padding: 0;
-    background: var(--paper);
-    color: var(--ink);
-  }
-  :root[data-option="c"] body:has(.seniors-page) > :not(main),
-  :root[data-option="c"] .seniors-copy > :not(.seniors-option[data-option="c"]),
-  :root[data-option="c"] .seniors-option[data-option="c"] > :not(.seniors-card) {
-    display: none;
-  }
-  :root[data-option="c"] .seniors-page.prose,
-  :root[data-option="c"] .seniors-page .seniors-copy,
-  :root[data-option="c"] .seniors-page .seniors-option {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 0;
-    border: 0;
-  }
-  :root[data-option="c"] .seniors-page .seniors-card {
-    margin: 0;
-    padding: 18px;
-    border: 1px solid var(--ink);
-    border-radius: 0;
-    font-family: Arial, sans-serif;
-    font-size: 18px;
-    line-height: 1.4;
-    background: var(--paper);
-    color: var(--ink);
-  }
-  :root[data-option="c"] .seniors-card p + p { margin-top: 12px; }
-  :root[data-option="c"] .seniors-card ul { margin-block: 12px; }
-  :root[data-option="c"] .seniors-card li + li { margin-top: 6px; }
-}
 
-/* ---------- Parents: shared guidance, conversation options and printable cards ---------- */
+/* ---------- Parents: shared guidance ---------- */
 .parents-page {
   width: 100%;
   font-size: max(18px, 1em);
@@ -1237,83 +1210,14 @@ main .doors .young-doors li:nth-child(3) { border-top: 0; }
 .parents-copy { max-width: 48rem; }
 :root .parents-page.prose h2 { line-height: 1.3; }
 :root .parents-page.prose h3 { line-height: 1.35; }
-.parents-page h2[id], .parents-page h3[id], .parents-conversation { scroll-margin-top: 24px; }
+.parents-page h2[id], .parents-page h3[id] { scroll-margin-top: 24px; }
 .parents-page .help-now { max-width: none; }
 .parents-page .help-now h2 { font-size: 1.5rem; }
 .parents-page .parents-copy > h2 { margin-top: 40px; }
-.parents-page .parents-copy > .seniors-section { margin-top: 48px; }
-.parents-bottom > .seniors-section + .seniors-section {
-  margin-top: 48px;
-  padding-top: 32px;
-  border-top: 1px solid var(--line);
-}
-.parents-bottom > .seniors-section > .proposal { margin-bottom: 16px; }
-.parents-links .parents-label-b, .parents-links .parents-label-c { display: none; }
-:root[data-option="b"] .parents-links .parents-label-a,
-:root[data-option="c"] .parents-links .parents-label-a { display: none; }
-:root[data-option="b"] .parents-links .parents-label-b,
-:root[data-option="c"] .parents-links .parents-label-c { display: inline; }
 /* Keep real table semantics and allow keyboard scrolling within the table box. */
 .parents-table-scroll { max-width: 100%; overflow-x: auto; margin-block: 24px; }
 .parents-table-scroll .seniors-table { min-width: 32rem; margin-top: 0; }
 .parents-table-scroll:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
-.parents-card { max-width: 42rem; }
-.parents-page .parents-card > h3:first-child { margin-top: 0; }
-.parents-walkthrough .walk-controls { margin-top: 0; }
 @media (max-width: 480px) {
   .parents-page .callout { padding: 20px 16px; }
-}
-@media print {
-  /* With C showing, print two pen-and-paper cards, each intact on its own page. */
-  :root[data-option="c"] body:has(main.parents-page) {
-    --ink: #000;
-    --ink-soft: #000;
-    --surface: #fff;
-    --paper: #fff;
-    --line: #000;
-    color-scheme: light;
-    display: block;
-    min-height: 0;
-    margin: 0;
-    padding: 0;
-    background: var(--paper);
-    color: var(--ink);
-  }
-  :root[data-option="c"] body:has(main.parents-page) > :not(main),
-  :root[data-option="c"] .parents-copy > :not(.parents-conversation),
-  :root[data-option="c"] .parents-option[data-option="c"] > :not(.parents-card) { display: none; }
-  :root[data-option="c"] .parents-page.prose,
-  :root[data-option="c"] .parents-copy,
-  :root[data-option="c"] .parents-conversation,
-  :root[data-option="c"] .parents-option {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-    padding: 0;
-    border: 0;
-  }
-  :root[data-option="c"] .parents-page .parents-card {
-    max-width: 42rem;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid var(--ink);
-    border-radius: 0;
-    break-inside: avoid;
-    page-break-inside: avoid;
-    font: 18px/1.4 Arial, sans-serif;
-    background: var(--paper);
-    color: var(--ink);
-    box-shadow: none;
-  }
-  :root[data-option="c"] .parents-page .parents-card + .parents-card {
-    break-before: page;
-    page-break-before: always;
-  }
-  :root[data-option="c"] .parents-card h3 {
-    margin: 0;
-    font: 700 22px/1.3 Arial, sans-serif;
-    letter-spacing: normal;
-    color: var(--ink);
-  }
-  :root[data-option="c"] .parents-card strong { font-weight: 700; }
 }

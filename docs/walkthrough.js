@@ -38,7 +38,26 @@
       var stage = el("div", "walk-stage");
       // The original step text remains accessible; the chat visual repeats its messages.
       stage.setAttribute("aria-hidden", "true");
-      var chat = el("div", "walk-chat");
+      // A made-up in-game screen: a match HUD with the chat box in the corner.
+      var chat = el("div", "walk-chat game-screen");
+      var hud = el("div", "game-hud");
+      var health = el("div", "game-hp");
+      health.appendChild(el("span", "game-hp-label", "HP"));
+      var healthBar = el("span", "game-hp-bar");
+      healthBar.appendChild(el("span"));
+      health.appendChild(healthBar);
+      var minimap = el("div", "game-map");
+      minimap.appendChild(el("span", "game-map-dot"));
+      hud.append(health, el("p", "game-timer", "Round 3 · 02:14"), minimap);
+      var chatBox = el("div", "game-chatbox");
+      var tabs = el("div", "game-tabs");
+      ["All", "Team", "Whisper"].forEach(function (name) {
+        tabs.appendChild(el("span", name === "Whisper" ? "is-on" : "", name));
+      });
+      var log = el("div", "game-log");
+      var input = el("p", "game-input");
+      chatBox.append(tabs, log, input);
+      chat.append(hud, chatBox);
       var extra = el("div", "walk-extra");
       var signs = el("ul", "sign-chips");
       var signChips = ["Hurry", "Secrecy", "Owing"].map(function (name) {
@@ -73,23 +92,26 @@
       back.setAttribute("aria-disabled", index === 0 ? "true" : "false");
       next.setAttribute("aria-disabled", index === steps.length - 1 ? "true" : "false");
       if (freeSkin) {
-        chat.replaceChildren();
+        log.replaceChildren();
         extra.replaceChildren();
         stage.classList.toggle("is-paused", index >= 3 && index <= 5);
+        var line = function (kind, channel, who, text) {
+          var row = el("p", "game-line game-" + kind);
+          row.appendChild(el("span", "game-channel", channel + " "));
+          if (who) row.appendChild(el("span", "game-who", who + ": "));
+          row.appendChild(document.createTextNode(text));
+          log.appendChild(row);
+        };
         if (index === 7) {
-          chat.appendChild(el("p", "chat-ended", "You blocked and reported Kai_plays"));
+          line("system", "[System]", "", "You blocked and reported Kai_plays.");
         } else {
-          chat.appendChild(el("p", "chat-name", "Kai_plays"));
           messages.slice(0, Math.min(index + 1, 3)).forEach(function (message) {
-            chat.appendChild(el("p", "chat-bubble", message));
+            line("whisper", "[Whisper]", "Kai_plays", message);
           });
-          if (index >= 5) chat.appendChild(el("p", "chat-bubble chat-reply", "no thanks"));
-          if (index === 6) chat.appendChild(el("p", "chat-bubble", messages[3]));
-          if (index === 3) {
-            var replyBox = el("div", "chat-empty-reply");
-            chat.appendChild(replyBox);
-          }
+          if (index >= 5) line("you", "[To Kai_plays]", "You", "no thanks");
+          if (index === 6) line("whisper", "[Whisper]", "Kai_plays", messages[3]);
         }
+        input.textContent = index === 3 ? "Reply to Kai_plays\u2026" : "Press Enter to chat";
         if (index >= 3 && index <= 5) extra.appendChild(el("p", "walk-habit", ["Pause", "Think", "Act"][index - 3]));
         if (index === 4) {
           extra.appendChild(el("p", "", "Kai gets: your account"));
