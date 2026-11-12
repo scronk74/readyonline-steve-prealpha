@@ -1014,7 +1014,7 @@ main .doors .young-doors li:nth-child(3) { border-top: 0; }
 }
 .doors-note { margin-top: 12px; font-size: 1rem; line-height: 1.5; }
 /* Three made-up examples in a row: a text, a game chat and a social app message request */
-.home-examples { margin-top: 56px; }
+.home-examples { margin-top: 36px; }
 .home-examples > h2 { font-size: 1.5rem; margin-bottom: 20px; }
 .example-row {
   display: grid;
@@ -1127,7 +1127,7 @@ main .doors .young-doors li:nth-child(3) { border-top: 0; }
   background: var(--surface);
 }
 .home-habit h2 { font-size: 1.75rem; line-height: 1.25; margin-bottom: 28px; }
-.home-habit > p { margin-top: 28px; }
+.home-habit > p { margin-top: 20px; }
 @media (max-width: 480px) {
   .home-habit { padding: 20px 16px 24px; }
   .home-habit h2 { font-size: 1.5rem; margin-bottom: 20px; }
