@@ -1028,8 +1028,6 @@ main .doors .young-doors li:nth-child(3) { border-top: 0; }
   .home-habit { padding: 20px 16px 24px; }
   .home-habit h2 { font-size: 1.5rem; margin-bottom: 20px; }
 }
-.home-section { max-width: 48rem; margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--line); }
-.home-section h2 { font-size: 1.75rem; }
 
 /* A made-up message is real text, with no working address or animation. */
 /* A trimmed phone screenshot of a text (SMS) from an unknown sender.
