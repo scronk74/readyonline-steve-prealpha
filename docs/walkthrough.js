@@ -80,7 +80,7 @@
       var text = steps[index].children[1].textContent;
       return text.slice(text.indexOf('"') + 1, text.lastIndexOf('"'));
     }) : [];
-    var moveLabels = ["Stop replying", "Check another way", "Block and report", "Tell someone you trust"];
+    var moveLabels = ["Stop replying", "Check another way", "Block and report", "Tell an adult you trust"];
     var index = 0;
     function render(announce) {
       steps.forEach(function (step, n) {
@@ -103,18 +103,18 @@
           log.appendChild(row);
         };
         if (index === 7) {
-          line("system", "[System]", "", "You blocked and reported Kai_plays.");
+          line("system", "[System]", "", "You blocked and reported Sunny_Skies22.");
         } else {
           messages.slice(0, Math.min(index + 1, 3)).forEach(function (message) {
-            line("whisper", "[Whisper]", "Kai_plays", message);
+            line("whisper", "[Whisper]", "Sunny_Skies22", message);
           });
-          if (index >= 5) line("you", "[To Kai_plays]", "You", "no thanks");
-          if (index === 6) line("whisper", "[Whisper]", "Kai_plays", messages[3]);
+          if (index >= 5) line("you", "[To Sunny_Skies22]", "You", "no thanks");
+          if (index === 6) line("whisper", "[Whisper]", "Sunny_Skies22", messages[3]);
         }
-        input.textContent = index === 3 ? "Reply to Kai_plays\u2026" : "Press Enter to chat";
+        input.textContent = index === 3 ? "Reply to Sunny_Skies22\u2026" : "Press Enter to chat";
         if (index >= 3 && index <= 5) extra.appendChild(el("p", "walk-habit", ["Pause", "Think", "Act"][index - 3]));
         if (index === 4) {
-          extra.appendChild(el("p", "", "Kai gets: your account"));
+          extra.appendChild(el("p", "", "Sunny gets: your account"));
           extra.appendChild(el("p", "", "You get: maybe nothing"));
         }
         if (index === 5) {
