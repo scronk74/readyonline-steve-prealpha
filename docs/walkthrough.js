@@ -137,16 +137,4 @@
     walkthrough.classList.add("is-enhanced");
     render(false);
   });
-
-  // A direct help link reveals the disclosure, including when landing on its hash.
-  var threats = document.getElementById("threats");
-  if (!threats) return;
-  function revealThreats() {
-    if (window.location.hash === "#threats") threats.open = true;
-  }
-  window.addEventListener("hashchange", revealThreats);
-  document.querySelectorAll('a[href="#threats"]').forEach(function (link) {
-    link.addEventListener("click", function () { threats.open = true; });
-  });
-  revealThreats();
 })();
